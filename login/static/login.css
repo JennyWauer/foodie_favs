@@ -9,3 +9,16 @@
     color: #394F8A;
     font-weight: bold;
 }
+
+#login {
+    background-color: #E1FCFD;
+}
+
+.form {
+    background-color: white;
+}
+
+.sign-in{
+    background-color: #394F8A;
+    color: #E1FCFD; 
+}

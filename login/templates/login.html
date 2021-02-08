@@ -19,20 +19,19 @@
         <h2 class="pr-5 mb-0">Foodie Favs</h2>
         <h4 class="mb-0">About</h4>
     </header>
-    <div class="w-100">
-        <h1 class="ml-3">Login</h1>
-        <form action="/user_login" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="login_email" class="col-sm-2 col-form-label">Email</label>
-                <input type="text" name="login_email" id="login_email">
-            </div>
-            <div class="form-group">
-                <label for="login_pass" class="col-sm-2 col-form-label">Password</label>
-                <input type="text" name="login_pass" id="login_pass">
-            </div>
-            <input type="submit" value="Log In" class="form-group ml-3">
-        </form>
+    <div style="height: 750px;" class="w-50 ml-auto mr-auto mt-5 mb-5 d-flex flex-column" id="login">
+        <div class="form w-50 ml-auto h-100">   
+            <h1 class="text-center">Login</h1>
+            <form action="/user_login" method="POST" class="">
+                {% csrf_token %}
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_email" id="login_email" placeholder="email">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_pass" id="login_pass" placeholder="password">
+                <br>
+                <input class="sign-in w-25 m-2 p-2 shadow-sm rounded border-0" type="submit" value="Sign In">
+            </form>
+            <p>Not a user? <a class="text-primary"><u>Register</u></a></p>
+        </div>
+        
     </div>
 </body>
 
