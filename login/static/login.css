@@ -2,4 +2,10 @@
 
 #body {
     background-color: #EAD6CD;
+    font-family: "Roboto", sans-serif;
+}
+
+#header {
+    color: #394F8A;
+    font-weight: bold;
 }
