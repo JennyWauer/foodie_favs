@@ -38,6 +38,19 @@ def new_user(request):
             return redirect('/home')
     return redirect('/login')
 
+def user_login(request):
+    if request.method == 'GET':
+        return redirect('/')
+    if request.method == 'POST':
+        user = User.objects.filter(email=request.POST['login_email'])
+        if user:
+            logged_user = user[0] 
+            if bcrypt.checkpw(request.POST['login_pass'].encode(), logged_user.password.encode()):
+                request.session['userid'] = logged_user.id
+                return redirect('/register')
+        else:
+            messages.error(request, 'Email/password combination not recognized. Please try again!')
+        return redirect("/login")
 
 def home(request):
     return redirect('/login')
