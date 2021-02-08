@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,15 +21,18 @@
     </header>
     <div style="height: 750px;" class="w-50 ml-auto mr-auto mt-5 mb-5 d-flex flex-column" id="login">
         <div class="form w-50 ml-auto h-100">   
-            <h1 class="text-center">Login</h1>
+            <h1 class="text-center">Register</h1>
             <form action="/user_login" method="POST" class="">
                 {% csrf_token %}
-                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_email" id="login_email" placeholder="email">
-                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_pass" id="login_pass" placeholder="password">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="first_name" id="first_name" placeholder="first name">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="last_name" id="last_name" placeholder="last name">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="email" id="email" placeholder="email">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="pass" id="pass" placeholder="password">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="confirm_pass" id="confirm_pass" placeholder=" confirm password">
                 <br>
-                <input class="sign-in w-25 m-2 p-2 shadow-sm rounded border-0" type="submit" value="Sign In">
+                <input class="sign-in w-25 m-2 p-2 shadow-sm rounded border-0" type="submit" value="Register">
             </form>
-            <p>Not a user? <a class="text-primary"><u>Register</u></a></p>
+            <p class="text-center">Already a user? <a class="text-primary"><u>Sign In</u></a></p>
         </div>
         
     </div>
