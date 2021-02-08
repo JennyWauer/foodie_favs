@@ -1,17 +1,17 @@
 /* CSS for the page */
 
 #body {
-    background-color: #EAD6CD;
+    background-color: #FBE8A6;
     font-family: "Roboto", sans-serif;
 }
 
 #header {
-    color: #394F8A;
+    color: #303c6c;
     font-weight: bold;
 }
 
 #login {
-    background-color: #E1FCFD;
+    background-color: #d2fdff;
 }
 
 .form {
@@ -19,10 +19,10 @@
 }
 
 .sign-in{
-    background-color: #394F8A;
-    color: #E1FCFD; 
+    background-color: #303c6c;
+    color: #d2fdff; 
 }
 
 .about {
-    color: #E1FCFD; 
+    color: #303c6c; 
 }
