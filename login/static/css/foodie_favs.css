@@ -3,7 +3,9 @@
 #body {
     font-family: "Roboto", sans-serif;
     background-image: url("../img/about_img.jpg");
+    background-size: cover;
 }
+
 
 #header {
     color: #303c6c;
