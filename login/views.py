@@ -47,10 +47,7 @@ def user_login(request):
             logged_user = user[0] 
             if bcrypt.checkpw(request.POST['login_pass'].encode(), logged_user.password.encode()):
                 request.session['userid'] = logged_user.id
-                return redirect('/register')
+                return redirect('/home')
         else:
             messages.error(request, 'Email/password combination not recognized. Please try again!')
         return redirect("/login")
-
-def home(request):
-    return redirect('/login')
