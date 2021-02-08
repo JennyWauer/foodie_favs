@@ -1,15 +1,11 @@
 /* CSS for the page */
 
 #body {
-    background-color: #d2fdff;
     font-family: "Roboto", sans-serif;
+    background-image: url("../img/about_img.jpg");
 }
 
 #header {
     color: #303c6c;
     font-weight: bold;
 }
-
-.sign-in{
-    background-color: #303c6c;
-    color: #d2fdff; 
