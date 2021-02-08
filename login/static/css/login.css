@@ -10,8 +10,12 @@
     font-weight: bold;
 }
 
+#login {
+    background-image: url(..\img\sushi.jpg);
+}
+
 .form {
-    background-image: url("\static\img\sushi.jpg");
+    background-color: white;
 }
 
 .sign-in{
