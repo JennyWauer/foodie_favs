@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+
+<body id="body">
+    <header id="header" class="bg-white d-flex p-3 align-items-center">
+        <h2 class="pr-5 mb-0">Foodie Favs</h2>
+        <h4 class="mb-0">About</h4>
+    </header>
+    <div style="height: 750px;" class="w-50 ml-auto mr-auto mt-5 mb-5 d-flex flex-column" id="login">
+        <div class="form w-50 ml-auto h-100">   
+            <h1 class="text-center">Login</h1>
+            <form action="/user_login" method="POST" class="">
+                {% csrf_token %}
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_email" id="login_email" placeholder="email">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_pass" id="login_pass" placeholder="password">
+                <br>
+                <input class="sign-in w-25 m-2 p-2 shadow-sm rounded border-0" type="submit" value="Sign In">
+            </form>
+            <p>Not a user? <a class="text-primary"><u>Register</u></a></p>
+        </div>
+        
+    </div>
+</body>
+
+</html>
