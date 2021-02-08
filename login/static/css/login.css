@@ -11,7 +11,8 @@
 }
 
 #login {
-    background-image: url(""../img/sushi.jpg");
+    background-image: url("../img/sushi.jpg");
+    background-size: contain;
 }
 
 .form {
