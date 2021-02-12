@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from login.models import User
+
 def home(request):
     if 'userid' in request.session:
         context = {
