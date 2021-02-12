@@ -10,8 +10,10 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/app.js' %}"></script> 
 </head>
 
 <body id="body">
@@ -21,7 +23,21 @@
     </header>
     <div>
         <form action="add_recipe" method="POST">
+            {% csrf_token %}
+            <label for="name">Recipe Name:</label>
             <input type="text" name="name" id="name">
+            <div id="ingredients">
+                <label for="ingredient">Ingredients:</label>
+                <label for="amount">Amount:</label>
+                <input type="text" name="amount">
+                <label for="ingredient">Name:</label>
+                <input type="text" name="ingredient">
+            </div>
+            <button type="button" id="addIngredient">Add ingredient</button>
+            <div id="steps">
+                <input type="text" name="step" id="step">
+            </div>
+            <button type="button" id="addStep">Add step</button>
             <input type="submit" name="submit" id="submit" value="Create Recipe!">
         </form>
     </div>

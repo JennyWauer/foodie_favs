@@ -3,6 +3,7 @@ from django.db import models
 from login.models import User
 
 class Ingredient(models.Model):
+    amount = models.CharField(max_length=10,default="")
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
