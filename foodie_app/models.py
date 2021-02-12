@@ -2,14 +2,6 @@ from django.db import models
 
 from login.models import User
 
-class Recipe(models.Model):
-    name = models.CharField(max_length=255)
-    incredients = models.ManyToManyField(Ingredient, related_name="recipies")
-    steps = models.ManyToManyField(Step, related_name="recipies")
-    menus = models.ManyToManyField(Menu, related_name="menus")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -27,5 +19,13 @@ class Menu(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Following(models.Model):
-    target = models.ForeignKey(User, related_name="followers")
-    follower = models.ForeignKey(User, related_name="targets")
+    target = models.ForeignKey(User, related_name="followers", on_delete = models.CASCADE)
+    follower = models.ForeignKey(User, related_name="targets", on_delete = models.CASCADE)
+
+class Recipe(models.Model):
+    name = models.CharField(max_length=255)
+    incredients = models.ManyToManyField(Ingredient, related_name="recipies")
+    steps = models.ManyToManyField(Step, related_name="recipies")
+    menus = models.ManyToManyField(Menu, related_name="menus")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
