@@ -25,3 +25,7 @@ class Menu(models.Model):
     week_end = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Following(models.Model):
+    target = models.ForeignKey(User, related_name="followers")
+    follower = models.ForeignKey(User, related_name="targets")
