@@ -8,3 +8,8 @@ class Recipe(models.Model):
     steps = models.ManyToManyField(Step, related_name="recipies")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Ingredient(models.Model):
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
