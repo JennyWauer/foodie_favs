@@ -10,9 +10,11 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_recipe.css' %}">
     <script src="{% static 'js/app.js' %}"></script> 
 </head>
 
@@ -21,24 +23,30 @@
         <h2 class="pr-5 mb-0">Foodie Favs</h2>
         <h4 class="mb-0"><a href="/" class="about">About</a></h4>
     </header>
-    <div>
+    <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-3 mb-5 bg-white rounded">
         <form action="add_recipe" method="POST">
             {% csrf_token %}
-            <label for="name">Recipe Name:</label>
-            <input type="text" name="name" id="name">
-            <div id="ingredients">
-                <label for="ingredient">Ingredients:</label>
+            <div class="form-group">
+                <label class="label" for="name">Recipe Name:</label>
+                <br>
+                <input type="text" name="name" id="name">
+            </div>
+            
+            <p class="label">Ingredients:</p>
+            <div class="mb-3" id="ingredients">
                 <label for="amount">Amount:</label>
                 <input type="text" name="amount">
                 <label for="ingredient">Name:</label>
                 <input type="text" name="ingredient">
             </div>
-            <button type="button" id="addIngredient">Add ingredient</button>
+            <button class="mb-3 rounded shadow-sm bg-white rounded" type="button" id="addIngredient">Add ingredient</button>
+            <p class="label">Steps:</p>
             <div id="steps">
                 <input type="text" name="step" id="step">
             </div>
-            <button type="button" id="addStep">Add step</button>
-            <input type="submit" name="submit" id="submit" value="Create Recipe!">
+            <button class="mt-3 rounded shadow-sm bg-white rounded" type="button" id="addStep">Add step</button>
+            <br>
+            <input class="mt-3 submit rounded shadow-sm rounded" type="submit" name="submit" id="submit" value="Create Recipe!">
         </form>
     </div>
 </body>

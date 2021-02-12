@@ -32,3 +32,4 @@ $(document).ready(function(){
         steps.appendChild(newStep);
     });
 });
+// NEED TO ADD BREAKS AFTER NEW ELEMENTS

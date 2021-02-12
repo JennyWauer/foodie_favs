@@ -1,0 +1,21 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #fef9e7;
+}
+
+.label {
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #303c6c;
+}
+
+button {
+    border: 2px solid #d2fdff;
+    color: #303c6c;
+}
+
+.submit {
+    background-color: #303c6c;
+    color: #d2fdff;
+}
