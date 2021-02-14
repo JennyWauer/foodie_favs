@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.home),
     path('new_recipe', views.new_recipe),
     path('<int:user_id>', views.user_profile),
+    path('add_item', views.add_item),
 ]

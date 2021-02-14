@@ -63,7 +63,11 @@
         <div class="w-25">
             <h2 class="heading">Shopping List</h2>
             <div class="shopping-list m-1 p-2 rounded">
-                <button class="add-item rounded">Add Item</button>
+                <form action="add_item" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="item" id="item" class="mb-1">
+                    <input type="submit" name="submit" value="Add Item">
+                </form>
             </div>
         </div>
     </div>

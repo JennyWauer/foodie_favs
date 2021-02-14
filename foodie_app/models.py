@@ -30,3 +30,8 @@ class Recipe(models.Model):
     menus = models.ManyToManyField(Menu, related_name="menus")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Shopping_List_Item(models.Model):
+    item = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
