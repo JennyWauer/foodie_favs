@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from .models import *
+
 from login.models import User
 
 def home(request):
@@ -11,7 +13,12 @@ def home(request):
     return redirect('/login')
 
 def new_recipe(request):
-    return render(request, 'new_recipe.html')
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid'])
+        }
+        return render(request, 'new_recipe.html', context)
+    return redirect('/login')
 
 def user_profile(request, user_id):
     if 'userid' in request.session:
@@ -20,3 +27,8 @@ def user_profile(request, user_id):
         }
         return render(request, 'user_profile.html', context)
     return redirect('/login')
+
+def add_recipe(request):
+    if request.method == "POST":
+        new_recipe = Recipe.objects.create(name=request.POST['name'])
+        
