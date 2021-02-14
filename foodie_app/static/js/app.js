@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    const ingredientsDic = []
+
+    const stepDic
+
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
             const ingredientLabel = document.createElement("Label");

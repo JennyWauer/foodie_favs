@@ -31,4 +31,5 @@ def user_profile(request, user_id):
 def add_recipe(request):
     if request.method == "POST":
         new_recipe = Recipe.objects.create(name=request.POST['name'])
-        
+        for instance in request.POST['ingredient'].all():
+            new_ingredient = Ingredient.objects.create(amount=request.POST['amount'], name=request.POST['ingredient'])
