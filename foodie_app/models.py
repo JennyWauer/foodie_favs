@@ -25,8 +25,8 @@ class Following(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
-    incredients = models.ManyToManyField(Ingredient, related_name="recipies")
-    steps = models.ManyToManyField(Step, related_name="recipies")
+    incredients = models.ForeignKey(Ingredient, related_name="ingredients", on_delete = models.CASCADE)
+    steps = models.ForeignKey(Step, related_name="steps", on_delete = models.CASCADE)
     menus = models.ManyToManyField(Menu, related_name="menus")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
