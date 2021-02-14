@@ -37,3 +37,13 @@ h2 {
     text-align: center;
     size: 1.15em;
 }
+
+.shopping-list {
+    border: 3px solid #d2fdff;
+}
+
+.add-item {
+    background-color: #303c6c;
+    color: #d2fdff;
+    font-size: 1.15em;
+}
