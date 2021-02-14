@@ -1,0 +1,13 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+h2 {
+    color: #303c6c;
+}
+
+.icon {
+    height: 3em;
+    width: 3em;
+    border: 2px solid #303c6c;
+}
