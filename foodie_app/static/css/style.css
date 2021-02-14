@@ -14,4 +14,11 @@ h2 {
 
 .menu {
     background-color: #d2fdff;
+    height: 500px;
+}
+
+.heading{
+    font-family: 'Dancing Script', cursive;
+    color: #303c6c;
+    text-align: center;
 }
