@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
-    const ingredientsDic = []
-
-    const stepDic
+    let i = 0;
+    let y = 0;
+    let z = 1;
+    const ingredientsDic = [];
+    const stepDic = [];
 
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
@@ -10,30 +12,51 @@ $(document).ready(function(){
             const newIngredient = document.createElement("INPUT");
             const amountLabel = document.createElement("Label");
             const amount = document.createElement("INPUT");
+            const ingredientKey = "ingredient" + i;
+            const ingredientValue = "amount" + i;
 
-            ingredientLabel.setAttribute("for", newIngredient);
-            ingredientLabel.innerHTML = "Name:"
+            ingredientLabel.setAttribute("for", ingredientKey);
+            ingredientLabel.innerHTML = "Name: "
             newIngredient.setAttribute("type", "text");
-            newIngredient.name = "ingredient";
-            amountLabel.setAttribute("for", amount);
-            amountLabel.innerHTML = "Amount:";
+            newIngredient.name = ingredientKey;
+            amountLabel.setAttribute("for", ingredientValue);
+            amountLabel.innerHTML = "Amount: ";
             amount.setAttribute("type", "text");
-            amount.name = "amount";
+            amount.name = ingredientValue;
+            $(amountLabel).addClass("mr-1")
+            $(ingredientLabel).addClass("mr-1")
+            $(amount).addClass("mb-3 mr-2")
+        
 
             ingredients.appendChild(amountLabel);
             ingredients.appendChild(amount);
             ingredients.appendChild(ingredientLabel);
             ingredients.appendChild(newIngredient);
+            ingredients.appendChild(document.createElement("BR"));
+            ingredientsDic.push({key: ingredientKey, value: ingredientValue});
+            console.log(ingredientsDic);
+            i++;
         });
     
     $('#addStep').click(() => {
         const steps = document.getElementById("steps");
         const newStep = document.createElement("INPUT");
+        const stepKeyValue = "step" + y;
+        const stepNum = z + ".";
+        const stepNumParagraph = document.createElement("P");
 
         newStep.setAttribute("type", "text");
-        newStep.name = "step"
+        newStep.name = stepKeyValue;
+        stepNumParagraph.innerHTML = stepNum;
+        z++;
+        y++;
+        $(stepNumParagraph).addClass("d-inline mr-1")
+        $(newStep).addClass("mb-3")
 
+        stepDic.push({key: stepKeyValue, value: stepKeyValue})
+        console.log(stepDic)
+        steps.appendChild(stepNumParagraph);
         steps.appendChild(newStep);
+        steps.appendChild(document.createElement("BR"))
     });
 });
-// NEED TO ADD BREAKS AFTER NEW ELEMENTS
