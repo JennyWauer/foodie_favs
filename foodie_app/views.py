@@ -31,8 +31,20 @@ def user_profile(request, user_id):
 def add_recipe(request):
     if request.method == "POST":
         new_recipe = Recipe.objects.create(name=request.POST['name'])
-        for instance in request.POST['ingredient'].all():
-            new_ingredient = Ingredient.objects.create(amount=request.POST['amount'], name=request.POST['ingredient'])
+        ingredients = request.POST.get('ingredients')
+        ingredients = json.loads(ingredients)
+        steps = request.POST.get('steps')
+        steps = json.loads(steps)
+
+        for ingredient in ingredients:
+            ingredient_model, created = Ingredient.objects.get_or_create(ingredient=ingredient['ingredient'], amount=ingredient['amount'])
+            new_recipe.ingredients.add(ingredient_model)
+            return JsonResponse({'status':200, 'created': created})
+
+        for step in steps:
+            step_model, created = Step.objects.get_or_create(step=step['step'])
+            new_recipe.step.add(step_model)
+            return JsonResponse({'status':200, 'created': created})
 
 def add_item(request):
     if request.method == 'POST':

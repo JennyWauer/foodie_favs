@@ -5,6 +5,8 @@ $(document).ready(function(){
     let z = 1;
     const ingredientsDic = [];
     const stepDic = [];
+    // const recipeName = document.getElementById("name");
+    // 'name': JSON.stringify(recipeName), 
 
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
@@ -59,4 +61,18 @@ $(document).ready(function(){
         steps.appendChild(newStep);
         steps.appendChild(document.createElement("BR"))
     });
+
+    function submitPairs(){
+        console.log("This is working!")
+        $.ajax({
+            url: "/add_recipe",
+            type: "POST",
+            data: {'ingredients': JSON.stringify(ingredientsDic), 'steps': JSON.stringify(stepDic), 'csrfmiddlewaretoken': '{{csrf_token}}' },
+
+            success : function(json) {
+                console.log(json);
+                console.log("success");
+            },
+        })
+    }
 });

@@ -24,14 +24,13 @@
         <h4 class="mb-0"><a href="/" class="about">About</a></h4>
     </header>
     <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-3 mb-5 bg-white rounded">
-        <form action="add_recipe" method="POST">
+        <form method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label class="label" for="name">Recipe Name:</label>
                 <br>
                 <input type="text" name="name" id="name">
             </div>
-            
             <p class="label">Ingredients:</p>
             <div class="mb-3 w-100" id="ingredients">
             </div>
