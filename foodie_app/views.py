@@ -59,3 +59,10 @@ def add_item(request):
     if request.method == 'POST':
         Shopping_List_Item.objects.create(item = request.POST['item'])
         return redirect('/')
+
+def log_off(request):
+    if request.method == 'GET':
+        return redirect('/books')
+    if request.method == 'POST':
+        request.session.clear()
+        return redirect('/')

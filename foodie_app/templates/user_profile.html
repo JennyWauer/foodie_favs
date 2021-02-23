@@ -19,6 +19,10 @@
     <header id="header" class="bg-white d-flex p-3 align-items-center">
         <h2 class="mb-0">Foodie Favs</h2>
         <p class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</p>
+        <form action="/home/log_off" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-link" type="submit" name="log_off" value="Log Out">
+        </form>
     </header>
     <div class="d-flex mt-1">
         <div class="w-50">

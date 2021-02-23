@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:user_id>', views.user_profile),
     path('add_item', views.add_item),
     path('add_recipe', views.add_recipe),
+    path('log_off', views.log_off),
 ]
