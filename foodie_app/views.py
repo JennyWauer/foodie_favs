@@ -61,8 +61,5 @@ def add_item(request):
         return redirect('/')
 
 def log_off(request):
-    if request.method == 'GET':
-        return redirect('/books')
-    if request.method == 'POST':
-        request.session.clear()
-        return redirect('/')
+    request.session.clear()
+    return redirect('/')

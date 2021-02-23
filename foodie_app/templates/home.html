@@ -10,6 +10,8 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -17,8 +19,10 @@
 <body id="body">
     <header id="header" class="bg-white d-flex p-3 align-items-center">
         <h2 class="pr-5 mb-0">Foodie Favs</h2>
-        <h4 class="mb-0"><a href="/" class="about">About</a></h4>
+        <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
+        <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
     </header>
+    <h1 class="heading">Recipies</h1>
 </body>
 
 </html>

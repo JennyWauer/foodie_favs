@@ -21,10 +21,8 @@
 <body id="body">
     <header id="header" class="bg-white d-flex p-3 align-items-center">
         <h2 class="pr-5 mb-0">Foodie Favs</h2>
-        <form action="/home/log_off" method="POST">
-            {% csrf_token %}
-            <input class="btn btn-link" type="submit" name="log_off" value="Log Out">
-        </form>
+        <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
+        <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
     </header>
     <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-3 mb-5 bg-white rounded">
         <form method="POST">
