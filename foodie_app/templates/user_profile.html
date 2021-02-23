@@ -65,8 +65,10 @@
             <div class="shopping-list m-1 p-2 rounded">
                 <form action="add_item" method="POST">
                     {% csrf_token %}
-                    <input type="text" name="item" id="item" class="mb-1">
-                    <input type="submit" name="submit" value="Add Item">
+                    <div id="shopping-list">
+
+                    </div>
+                    <input id="add-item" type="submit" name="submit" value="Add Item">
                 </form>
             </div>
         </div>

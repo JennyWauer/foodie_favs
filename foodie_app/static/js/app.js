@@ -86,6 +86,5 @@ $(document).ready(function(){
         const list = document.getElementById("shopping-list");
         const itemLabel = document.createElement("Label")
         const listItem = document.createElement("INPUT")
-        const itemLabelKey
     })
 });
