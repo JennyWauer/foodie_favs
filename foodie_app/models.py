@@ -28,6 +28,7 @@ class Recipe(models.Model):
     incredients = models.ForeignKey(Ingredient, related_name="ingredients", on_delete = models.CASCADE)
     steps = models.ForeignKey(Step, related_name="steps", on_delete = models.CASCADE)
     menus = models.ManyToManyField(Menu, related_name="menus")
+    user = models.ForeignKey(User, related_name="user", on_delete=models.CASCADE, default="1")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -5,8 +5,9 @@ $(document).ready(function(){
     let z = 1;
     const ingredientsDic = [];
     const stepDic = [];
-    // const recipeName = document.getElementById("name");
-    // 'name': JSON.stringify(recipeName), 
+    const recipeName = document.getElementById("name");
+    const user = document.getElementById("user");
+
 
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
@@ -16,6 +17,7 @@ $(document).ready(function(){
             const amount = document.createElement("INPUT");
             const ingredientKey = "ingredient" + i;
             const ingredientValue = "amount" + i;
+
 
             ingredientLabel.setAttribute("for", ingredientKey);
             ingredientLabel.innerHTML = "Name: "
@@ -62,17 +64,19 @@ $(document).ready(function(){
         steps.appendChild(document.createElement("BR"))
     });
 
-    function submitPairs(){
-        console.log("This is working!")
+    $('#submit').click(() => {
+        console.log("This is working!");
         $.ajax({
             url: "/add_recipe",
             type: "POST",
-            data: {'ingredients': JSON.stringify(ingredientsDic), 'steps': JSON.stringify(stepDic), 'csrfmiddlewaretoken': '{{csrf_token}}' },
+            data: { 'ingredients': JSON.stringify(ingredientsDic), 'steps': JSON.stringify(stepDic), 'name': JSON.stringify(recipeName), 'user': JSON.stringify(user), 'csrfmiddlewaretoken': '{{csrf_token}}' },
 
-            success : function(json) {
+            success: function (json) {
                 console.log(json);
                 console.log("success");
             },
-        })
+        });
     }
+    )
+    
 });
