@@ -3,6 +3,8 @@ $(document).ready(function(){
     let i = 0;
     let y = 0;
     let z = 1;
+    let ii = 0;
+    let yy = 0;
     const ingredientsDic = [];
     const stepDic = [];
     const recipeName = document.getElementById("name");
@@ -79,4 +81,11 @@ $(document).ready(function(){
     }
     )
     
+    $('add-item').click(() => {
+        console.log('hello')
+        const list = document.getElementById("shopping-list");
+        const itemLabel = document.createElement("Label")
+        const listItem = document.createElement("INPUT")
+        const itemLabelKey
+    })
 });
