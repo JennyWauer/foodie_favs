@@ -31,6 +31,7 @@ class Shopping_List_Item(models.Model):
 
 class Step(models.Model):
     step = models.CharField(max_length=255)
+    step_number = models.IntegerField(default=1)
     recipies = models.ForeignKey(Recipe, related_name="steps", on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

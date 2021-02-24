@@ -67,6 +67,7 @@ $(document).ready(function(){
             '<p class="mr-1 d-inline">' + stepNum + '.</p>' +
             '<input type="text" name="' + step + '" id="' + step + '" class="mb-1 mr-1">' +
             '<input type="submit" value="save step" class="submitStep rounded shadow-sm bg-white rounded">\n' +
+            '<input type="hidden" name="stepNum" id="stepNum>'
             '</form>\n' +
             '</div>';
         
