@@ -13,57 +13,68 @@ $(document).ready(function(){
 
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
-            const ingredientLabel = document.createElement("Label");
-            const newIngredient = document.createElement("INPUT");
-            const amountLabel = document.createElement("Label");
-            const amount = document.createElement("INPUT");
-            const ingredientKey = "ingredient" + i;
-            const ingredientValue = "amount" + i;
-
-
-            ingredientLabel.setAttribute("for", ingredientKey);
-            ingredientLabel.innerHTML = "Name: "
-            newIngredient.setAttribute("type", "text");
-            newIngredient.name = ingredientKey;
-            amountLabel.setAttribute("for", ingredientValue);
-            amountLabel.innerHTML = "Amount: ";
-            amount.setAttribute("type", "text");
-            amount.name = ingredientValue;
-            $(amountLabel).addClass("mr-1")
-            $(ingredientLabel).addClass("mr-1")
-            $(amount).addClass("mb-3 mr-2")
-        
-
-            ingredients.appendChild(amountLabel);
-            ingredients.appendChild(amount);
-            ingredients.appendChild(ingredientLabel);
-            ingredients.appendChild(newIngredient);
-            ingredients.appendChild(document.createElement("BR"));
-            ingredientsDic.push({key: ingredientKey, value: ingredientValue});
-            console.log(ingredientsDic);
+            const ingredient = "ingredient" + i;
+            const quantity = "quantity" + i;
+            const measurement = "measurement" + i;
+            const div = document.createElement("div");
+            div.innerHTML = '<div>\n' +
+                '<form action="/home/add_ingredient" method="POST" class=".ingredientForm">' +
+                '<label for="' + quantity + '" class="mr-1">Amount: </label>' +
+                '<input type="text" name="' + quantity + '" id="' + quantity + '" class="mr-1">' +
+                '<select name="' + measurement + '" id="' + measurement + '" class="mr-1">' +
+                '<option value="tsp">tsp.</option>' +
+                '<option value="tbsp">tbsp.</option>' +
+                '<option value="fl-oz">fl oz</option>' +
+                '<option value="mL">mL</option>' +
+                '<option value="cup">cup</option>' +
+                '<option value="ounce">oz</option>' +
+                '<option value="lb">lb</option>' +
+                '<option value="g">g</option>' +
+                '</select>' +
+                '<label for="' + ingredient + '" class="mr-1">Name: </label>' +
+                '<input type="text" name="' + ingredient + '" id="' + ingredient + '" class="mr-1">' +
+                '<input type="submit" value="save ingredient" class="submitIngredient rounded shadow-sm bg-white rounded">\n' +
+                '</form>' +
+                '</div>';
+            
+            ingredients.appendChild(div);
             i++;
+            // ingredientsDic.push({key: ingredientKey, value: ingredientValue});
+            // console.log(ingredientsDic);
+            // i++;
         });
     
+    $('.submitIngredient').click(() => {
+        $.ajax({
+            url: '/home/add_ingredient',
+            method: 'POST',
+            data: $('.ingredientForm').serialize()
+        })
+        .done(function(response){
+            console.log(response);
+        })
+        return false;
+    })
+
     $('#addStep').click(() => {
         const steps = document.getElementById("steps");
-        const newStep = document.createElement("INPUT");
-        const stepKeyValue = "step" + y;
-        const stepNum = z + ".";
-        const stepNumParagraph = document.createElement("P");
+        const newStep = document.createElement("div");
+        const step = "step" + y;
+        const stepNum = z;
 
-        newStep.setAttribute("type", "text");
-        newStep.name = stepKeyValue;
-        stepNumParagraph.innerHTML = stepNum;
-        z++;
+        newStep.innerHTML = '<div>\n' +
+            '<form action="/home/add_step" method="POST">' +
+            '<p class="mr-1 d-inline">' + stepNum + '.</p>' +
+            '<input type="text" name="' + step + '" id="' + step + '" class="mb-1 mr-1">' +
+            '<input type="submit" value="save step" class="submitStep rounded shadow-sm bg-white rounded">\n' +
+            '</form>\n' +
+            '</div>';
+        
         y++;
-        $(stepNumParagraph).addClass("d-inline mr-1")
-        $(newStep).addClass("mb-3")
-
-        stepDic.push({key: stepKeyValue, value: stepKeyValue})
-        console.log(stepDic)
-        steps.appendChild(stepNumParagraph);
+        z++;
         steps.appendChild(newStep);
-        steps.appendChild(document.createElement("BR"))
+        // stepDic.push({key: stepKeyValue, value: stepKeyValue})
+        // console.log(stepDic)
     });
 
     $('#submit').click(() => {

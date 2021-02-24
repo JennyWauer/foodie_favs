@@ -10,7 +10,7 @@ body {
     color: #303c6c;
 }
 
-button {
+button, .submitIngredient, .submitStep {
     border: 2px solid #d2fdff;
     color: #303c6c;
 }
@@ -19,4 +19,4 @@ button {
     background-color: #303c6c;
     color: #d2fdff;
     font-size: 1.15em;
-}
+    }
