@@ -77,20 +77,20 @@ $(document).ready(function(){
         // console.log(stepDic)
     });
 
-    $('#submit').click(() => {
-        console.log("This is working!");
-        $.ajax({
-            url: "/add_recipe",
-            type: "POST",
-            data: { 'ingredients': JSON.stringify(ingredientsDic), 'steps': JSON.stringify(stepDic), 'name': JSON.stringify(recipeName), 'user': JSON.stringify(user), 'csrfmiddlewaretoken': '{{csrf_token}}' },
+    // $('#submit').click(() => {
+    //     console.log("This is working!");
+    //     $.ajax({
+    //         url: "/add_recipe",
+    //         type: "POST",
+    //         data: { 'ingredients': JSON.stringify(ingredientsDic), 'steps': JSON.stringify(stepDic), 'name': JSON.stringify(recipeName), 'user': JSON.stringify(user), 'csrfmiddlewaretoken': '{{csrf_token}}' },
 
-            success: function (json) {
-                console.log(json);
-                console.log("success");
-            },
-        });
-    }
-    )
+    //         success: function (json) {
+    //             console.log(json);
+    //             console.log("success");
+    //         },
+    //     });
+    // }
+    // )
     
     $('add-item').click(() => {
         console.log('hello')
