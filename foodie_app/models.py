@@ -17,6 +17,7 @@ class Menu(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
+    desc = models.CharField(max_length=255, default="")
     incredients = models.ForeignKey(Ingredient, related_name="ingredients", on_delete = models.CASCADE)
     menus = models.ManyToManyField(Menu, related_name="menus")
     user = models.ForeignKey(User, related_name="user", on_delete=models.CASCADE, default="1")
