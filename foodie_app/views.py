@@ -63,3 +63,11 @@ def add_item(request):
 def log_off(request):
     request.session.clear()
     return redirect('/')
+
+def add_ingredient(request):
+    if request.method == "POST":
+        Ingredient.objects.create(quantity=request.POST['quantity'],measurement=request.POST['measurement'],name=request.POST['name'])
+
+def add_step(request):
+    if request.method == "POST":
+        Step.objects.create(step=request.POST['step'])

@@ -13,9 +13,9 @@ $(document).ready(function(){
 
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
-            const ingredient = "ingredient" + i;
-            const quantity = "quantity" + i;
-            const measurement = "measurement" + i;
+            const ingredient = "ingredient";
+            const quantity = "quantity";
+            const measurement = "measurement";
             const div = document.createElement("div");
             div.innerHTML = '<div>\n' +
                 '<form action="/home/add_ingredient" method="POST" class=".ingredientForm">' +
@@ -63,7 +63,7 @@ $(document).ready(function(){
         const stepNum = z;
 
         newStep.innerHTML = '<div>\n' +
-            '<form action="/home/add_step" method="POST">' +
+            '<form action="/home/add_step" method="POST" class="stepForm">' +
             '<p class="mr-1 d-inline">' + stepNum + '.</p>' +
             '<input type="text" name="' + step + '" id="' + step + '" class="mb-1 mr-1">' +
             '<input type="submit" value="save step" class="submitStep rounded shadow-sm bg-white rounded">\n' +
@@ -76,6 +76,18 @@ $(document).ready(function(){
         // stepDic.push({key: stepKeyValue, value: stepKeyValue})
         // console.log(stepDic)
     });
+
+    $('.submitStep').click(() => {
+        $.ajax({
+            url: '/home/add_step',
+            method: 'POST',
+            data: $('.stepForm').serialize()
+        })
+        .done(function(response){
+            console.log(response);
+        })
+        return false;
+    })
 
     // $('#submit').click(() => {
     //     console.log("This is working!");
