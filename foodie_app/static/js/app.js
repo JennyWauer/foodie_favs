@@ -36,26 +36,41 @@ $(document).ready(function(){
                 '<input type="submit" value="save ingredient" class="submitIngredient rounded shadow-sm bg-white rounded">\n' +
                 '</form>' +
                 '</div>';
-            
+
             ingredients.appendChild(div);
             i++;
-            // ingredientsDic.push({key: ingredientKey, value: ingredientValue});
-            // console.log(ingredientsDic);
-            // i++;
-        });
-    
-    $('.submitIngredient').click(() => {
-        $.ajax({
-            url: '/home/add_ingredient',
-            method: 'POST',
-            data: $('.ingredientForm').serialize()
-        })
-        .done(function(response){
-            console.log(response);
-        })
-        return false;
-    })
 
+            function getCookie(c_name) {
+                if(document.cookie.length > 0) {
+                    c_start = document.cookie.indexOf(c_name + "=");
+                    if(c_start != -1) {
+                        c_start = c_start + c_name.length + 1;
+                        c_end = document.cookie.indexOf(";", c_start);
+                        if(c_end == -1) c_end = document.cookie.length;
+                        return unescape(document.cookie.substring(c_start,c_end));
+                    }
+                }
+                return "";
+            }
+
+            $('.submitIngredient').click((e) => {
+                e.preventDefault()
+                $.ajax({
+                    url: '/home/add_ingredient',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                      },
+                    method: 'POST',
+                    data: $('.ingredientForm').serialize()
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                return false;
+            })
+        });
     $('#addStep').click(() => {
         const steps = document.getElementById("steps");
         const newStep = document.createElement("div");
@@ -73,37 +88,39 @@ $(document).ready(function(){
         
         y++;
         z++;
+
         steps.appendChild(newStep);
-        // stepDic.push({key: stepKeyValue, value: stepKeyValue})
-        // console.log(stepDic)
+        function getCookie(c_name) {
+            if(document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=");
+                if(c_start != -1) {
+                    c_start = c_start + c_name.length + 1;
+                    c_end = document.cookie.indexOf(";", c_start);
+                    if(c_end == -1) c_end = document.cookie.length;
+                    return unescape(document.cookie.substring(c_start,c_end));
+                }
+            }
+            return "";
+        }
+
+        $('.submitIngredient').click((e) => {
+            e.preventDefault()
+            $.ajax({
+                url: '/home/add_ingredient',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                  },
+                method: 'POST',
+                data: $('.ingredientForm').serialize()
+            })
+            .done(function(response){
+                console.log(response);
+            })
+            return false;
+        })
     });
-
-    $('.submitStep').click(() => {
-        $.ajax({
-            url: '/home/add_step',
-            method: 'POST',
-            data: $('.stepForm').serialize()
-        })
-        .done(function(response){
-            console.log(response);
-        })
-        return false;
-    })
-
-    // $('#submit').click(() => {
-    //     console.log("This is working!");
-    //     $.ajax({
-    //         url: "/add_recipe",
-    //         type: "POST",
-    //         data: { 'ingredients': JSON.stringify(ingredientsDic), 'steps': JSON.stringify(stepDic), 'name': JSON.stringify(recipeName), 'user': JSON.stringify(user), 'csrfmiddlewaretoken': '{{csrf_token}}' },
-
-    //         success: function (json) {
-    //             console.log(json);
-    //             console.log("success");
-    //         },
-    //     });
-    // }
-    // )
     
     $('add-item').click(() => {
         console.log('hello')

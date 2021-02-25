@@ -65,6 +65,7 @@ def log_off(request):
     return redirect('/')
 
 def add_ingredient(request):
+    print("successful request")
     if request.method == "POST":
         Ingredient.objects.create(quantity=request.POST['quantity'],measurement=request.POST['measurement'],name=request.POST['name'])
 
