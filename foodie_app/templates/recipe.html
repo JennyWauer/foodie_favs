@@ -24,11 +24,14 @@
         <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
     <div class="pt-5"></div>
-    <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto">
-        <h2>{{recipe.name}}</h2>
-        <p>{{recipe.desc}}</p>
-        <p>{{recipe.ingredients}}</p>
-        <p>{{recipe.steps}}</p>
+    <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto rounded">
+        <h2 class="text-center">{{recipe.name}}</h2>
+        <div class="p-4">
+            <p>{{recipe.desc}}</p>
+            <p>{{recipe.ingredients}}</p>
+            <p>{{recipe.steps}}</p>
+        </div>
+        
     </div>
 </body>
 </html>
