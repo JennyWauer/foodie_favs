@@ -47,3 +47,9 @@ def add_recipe(request):
     if request.method == "POST":
         Recipe.objects.create(name=request.POST['name'],desc=request.POST['desc'],ingredients=request.POST['ingredients'],steps=request.POST['steps'],user=User.objects.get(id=request.POST['user_id']))
         return redirect('/home')
+
+def delete_recipe(request):
+    if request.method == "POST":
+        recipe_to_delete = Recipe.objects.get(id=request.POST['recipe_id'])
+        recipe_to_delete.delete
+        return redirect('/home')

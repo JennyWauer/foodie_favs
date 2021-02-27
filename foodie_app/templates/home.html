@@ -30,6 +30,13 @@
             <p>{{recipe.desc}}</p>
             <p>{{recipe.ingredients}}</p>
             <p>{{recipe.steps}}</p>
+            {% if recipe.user.id == user.id %}
+            <form action="/home/delete_recipe" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                <input class="btn btn-danger p-1" type="submit" name="delete" value="Delete">
+            </form>
+            {% endif %}
         </div>
     {% endfor %}
     </div>

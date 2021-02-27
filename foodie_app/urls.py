@@ -9,4 +9,5 @@ urlpatterns = [
     path('add_item', views.add_item),
     path('add_recipe', views.add_recipe),
     path('log_off', views.log_off),
+    path('delete_recipe', views.delete_recipe),
 ]
