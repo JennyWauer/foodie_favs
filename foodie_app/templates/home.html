@@ -30,7 +30,7 @@
     <div class="d-flex flex-wrap w-75 ml-auto mr-auto">
         {% for recipe in recipes %}
         <div class="recipe-card rounded shadow-sm w-25 p-3">
-            <h3 class="recipe-text text-center">{{recipe.name}}</h3>
+            <h3 class= "text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></h3>
             <p>{{recipe.desc}}</p>
             <p class="recipe-text font-weight-bold pb-0 mb-0">Ingredients:</p>
             <p>{{recipe.ingredients}}</p>
