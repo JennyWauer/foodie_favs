@@ -72,12 +72,14 @@ def add_ingredient(request):
     print("successful request")
     if request.method == "POST":
         quantity = request.POST.get('quantity')
+        print(quantity)
         quantity = json.loads(quantity)
         measurement = request.POST.get('measurement')
         measurement = json.loads(measurement)
         name = request.POST.get('name')
         name = json.loads(ingredients)
         ingredient_model, created = Ingredient.objects.get_or_create(quantity=quantity['quantity'], measurement=measurement['measurement'], name=name['name'])
+        ingredient_model.save()
         return HttpResponse("It worked!")
 
 def add_step(request):

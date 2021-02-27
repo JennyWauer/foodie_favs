@@ -3,12 +3,12 @@ $(document).ready(function(){
     let i = 0;
     let y = 0;
     let z = 1;
-    let ii = 0;
-    let yy = 0;
-    const ingredientsDic = [];
-    const stepDic = [];
-    const recipeName = document.getElementById("name");
-    const user = document.getElementById("user");
+    // let ii = 0;
+    // let yy = 0;
+    // const ingredientsDic = [];
+    // const stepDic = [];
+    // const recipeName = document.getElementById("name");
+    // const user = document.getElementById("user");
 
 
     $('#addIngredient').click(() => {
@@ -18,9 +18,9 @@ $(document).ready(function(){
             const measurement = "measurement";
             const div = document.createElement("div");
             div.innerHTML = '<div>\n' +
-                '<form action="/home/add_ingredient" method="POST" class=".ingredientForm">' +
-                '<label for=quantity class="mr-1">Amount: </label>' +
-                '<input type="text" name=quantity id=quantity class="mr-1">' +
+                '<form action="/home/add_ingredient" method="POST" name="ingredientForm" class="ingredientForm">' +
+                '<label for="quantity" class="mr-1">Amount: </label>' +
+                '<input type="text" name="quantity" id="quantity" class="mr-1">' +
                 '<select name="measurement" id="measurement" class="mr-1">' +
                 '<option value="tsp">tsp.</option>' +
                 '<option value="tbsp">tbsp.</option>' +
@@ -55,19 +55,16 @@ $(document).ready(function(){
 
             $('.submitIngredient').click((e) => {
                 e.preventDefault()
+                const form = $('.ingredientForm')
                 $.ajax({
-                    url: '/home/add_ingredient',
+                    url: form.attr('action'),
+                    type: form.attr('method'),
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'X-CSRFToken': getCookie('csrftoken'),
                       },
-                    method: 'POST',
-                    data:{
-                        'quantity': $('#quantity').val(),
-                        'measurement': $('#measurement').val(),
-                        'ingredient': $('#name').val()
-                    },
+                    data: form.serialize(),
                 })
                 .done(function(response){
                     console.log(response);
