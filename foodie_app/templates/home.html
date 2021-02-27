@@ -17,21 +17,23 @@
 </head>
 
 <body id="body">
-    <header id="header" class="bg-white d-flex p-3 align-items-center">
+    <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm">
         <h2 class="pr-5 mb-0">Foodie Favs</h2>
         <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
         <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
     </header>
-    <h1 class="heading">Recipies</h1>
-    {% for recipe in recipes %}
-        <div class="recipe-card">
-            <h1>working</h1>
-            <h3>{{recipe.name}}</h3>
+    <h1 class="heading m-3">Recipies</h1>
+    <div class="d-flex">
+        {% for recipe in recipes %}
+        <div class="recipe-card rounded shadow-sm w-25 p-3">
+            <h3 class="recipe-header text-center">{{recipe.name}}</h3>
             <p>{{recipe.desc}}</p>
             <p>{{recipe.ingredients}}</p>
             <p>{{recipe.steps}}</p>
         </div>
     {% endfor %}
+    </div>
+    
 </body>
 
 </html>
