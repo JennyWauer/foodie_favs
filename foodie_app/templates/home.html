@@ -19,16 +19,19 @@
 <body id="body">
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm">
         <h2 class="pr-5 mb-0">Foodie Favs</h2>
-        <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
-        <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
+        <a href="/home/new_recipe" class="new-recipe p-1 rounded ml-auto mr-2">+ Recipe</a>
+        <a href="/home/{{user.id}}" class="icon rounded p-1">My Profile</a>
+        <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
     <h1 class="heading m-3">Recipies</h1>
     <div class="d-flex">
         {% for recipe in recipes %}
         <div class="recipe-card rounded shadow-sm w-25 p-3">
-            <h3 class="recipe-header text-center">{{recipe.name}}</h3>
+            <h3 class="recipe-text text-center">{{recipe.name}}</h3>
             <p>{{recipe.desc}}</p>
+            <p class="recipe-text font-weight-bold pb-0 mb-0">Ingredients:</p>
             <p>{{recipe.ingredients}}</p>
+            <p class="recipe-text font-weight-bold pb-0 mb-0">Steps:</p>
             <p>{{recipe.steps}}</p>
             {% if recipe.user.id == user.id %}
             <form action="/home/delete_recipe" method="POST">
