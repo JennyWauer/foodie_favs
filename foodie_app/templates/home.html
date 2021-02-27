@@ -23,6 +23,15 @@
         <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
     </header>
     <h1 class="heading">Recipies</h1>
+    {% for recipe in recipes %}
+        <div class="recipe-card">
+            <h1>working</h1>
+            <h3>{{recipe.name}}</h3>
+            <p>{{recipe.desc}}</p>
+            <p>{{recipe.ingredients}}</p>
+            <p>{{recipe.steps}}</p>
+        </div>
+    {% endfor %}
 </body>
 
 </html>

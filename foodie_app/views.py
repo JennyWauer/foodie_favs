@@ -11,7 +11,8 @@ from django.http import HttpResponse
 def home(request):
     if 'userid' in request.session:
         context = {
-            "user": User.objects.get(id=request.session['userid'])
+            "user": User.objects.get(id=request.session['userid']),
+            "recipes": Recipe.objects.all(),
         }
         return render(request, 'home.html', context)
     return redirect('/login')
@@ -30,10 +31,6 @@ def user_profile(request, user_id):
             "user": User.objects.get(id=request.session['userid']),
             "recipes": Recipe.objects.all(),
         }
-        ingredient_list = Ingredient.objects.all()
-        step_list = Step.objects.all()
-        print(ingredient_list)
-        print(step_list)
         return render(request, 'user_profile.html', context)
     return redirect('/login')
 
