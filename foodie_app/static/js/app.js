@@ -1,4 +1,24 @@
-// $(document).ready(function(){
+$(document).ready(function(){
+
+    mybutton = document.getElementById("topBtn");
+
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    $('#topBtn').click(
+        function scrollToTop() {
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0;
+          }
+    )    
+});
 
 //     let i = 0;
 //     let y = 0;
@@ -101,4 +121,3 @@
 //         const list = document.getElementById("shopping-list");
 //         const itemLabel = document.createElement("Label")
 //         const listItem = document.createElement("INPUT")
-//     })
