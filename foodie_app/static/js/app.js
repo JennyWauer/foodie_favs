@@ -19,9 +19,9 @@ $(document).ready(function(){
             const div = document.createElement("div");
             div.innerHTML = '<div>\n' +
                 '<form action="/home/add_ingredient" method="POST" class=".ingredientForm">' +
-                '<label for="' + quantity + '" class="mr-1">Amount: </label>' +
-                '<input type="text" name="' + quantity + '" id="' + quantity + '" class="mr-1">' +
-                '<select name="' + measurement + '" id="' + measurement + '" class="mr-1">' +
+                '<label for=quantity class="mr-1">Amount: </label>' +
+                '<input type="text" name=quantity id=quantity class="mr-1">' +
+                '<select name="measurement" id="measurement" class="mr-1">' +
                 '<option value="tsp">tsp.</option>' +
                 '<option value="tbsp">tbsp.</option>' +
                 '<option value="fl-oz">fl oz</option>' +
@@ -31,8 +31,8 @@ $(document).ready(function(){
                 '<option value="lb">lb</option>' +
                 '<option value="g">g</option>' +
                 '</select>' +
-                '<label for="' + ingredient + '" class="mr-1">Name: </label>' +
-                '<input type="text" name="' + ingredient + '" id="' + ingredient + '" class="mr-1">' +
+                '<label for="name" class="mr-1">Name: </label>' +
+                '<input type="text" name="name" id="name" class="mr-1">' +
                 '<input type="submit" value="save ingredient" class="submitIngredient rounded shadow-sm bg-white rounded">\n' +
                 '</form>' +
                 '</div>';
@@ -63,7 +63,11 @@ $(document).ready(function(){
                         'X-CSRFToken': getCookie('csrftoken'),
                       },
                     method: 'POST',
-                    data: $('.ingredientForm').serialize()
+                    data:{
+                        'quantity': $('#quantity').val(),
+                        'measurement': $('#measurement').val(),
+                        'ingredient': $('#name').val()
+                    },
                 })
                 .done(function(response){
                     console.log(response);
@@ -88,38 +92,6 @@ $(document).ready(function(){
         
         y++;
         z++;
-
-        steps.appendChild(newStep);
-        function getCookie(c_name) {
-            if(document.cookie.length > 0) {
-                c_start = document.cookie.indexOf(c_name + "=");
-                if(c_start != -1) {
-                    c_start = c_start + c_name.length + 1;
-                    c_end = document.cookie.indexOf(";", c_start);
-                    if(c_end == -1) c_end = document.cookie.length;
-                    return unescape(document.cookie.substring(c_start,c_end));
-                }
-            }
-            return "";
-        }
-
-        $('.submitIngredient').click((e) => {
-            e.preventDefault()
-            $.ajax({
-                url: '/home/add_ingredient',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken'),
-                  },
-                method: 'POST',
-                data: $('.ingredientForm').serialize()
-            })
-            .done(function(response){
-                console.log(response);
-            })
-            return false;
-        })
     });
     
     $('add-item').click(() => {

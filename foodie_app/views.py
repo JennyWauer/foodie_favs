@@ -4,6 +4,10 @@ from .models import *
 
 from login.models import User
 
+import json
+
+from django.http import HttpResponse
+
 def home(request):
     if 'userid' in request.session:
         context = {
@@ -67,7 +71,14 @@ def log_off(request):
 def add_ingredient(request):
     print("successful request")
     if request.method == "POST":
-        Ingredient.objects.create(quantity=request.POST['quantity'],measurement=request.POST['measurement'],name=request.POST['name'])
+        quantity = request.POST.get('quantity')
+        quantity = json.loads(quantity)
+        measurement = request.POST.get('measurement')
+        measurement = json.loads(measurement)
+        name = request.POST.get('name')
+        name = json.loads(ingredients)
+        ingredient_model, created = Ingredient.objects.get_or_create(quantity=quantity['quantity'], measurement=measurement['measurement'], name=name['name'])
+        return HttpResponse("It worked!")
 
 def add_step(request):
     if request.method == "POST":
