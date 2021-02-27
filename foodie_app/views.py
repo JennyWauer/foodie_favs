@@ -51,5 +51,5 @@ def add_recipe(request):
 def delete_recipe(request):
     if request.method == "POST":
         recipe_to_delete = Recipe.objects.get(id=request.POST['recipe_id'])
-        recipe_to_delete.delete
+        recipe_to_delete.delete()
         return redirect('/home')
