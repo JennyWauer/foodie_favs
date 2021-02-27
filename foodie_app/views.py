@@ -53,3 +53,12 @@ def delete_recipe(request):
         recipe_to_delete = Recipe.objects.get(id=request.POST['recipe_id'])
         recipe_to_delete.delete()
         return redirect('/home')
+
+def recipe_page(request, recipe_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "recipe": Recipe.objects.get(id=recipe_id)
+        }
+        return render(request, 'recipe.html', context)
+    return redirect('/')
