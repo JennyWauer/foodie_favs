@@ -32,11 +32,7 @@
         <div class="recipe-card rounded shadow-sm w-25 p-3">
             <h3 class= "text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></h3>
             <p>{{recipe.desc}}</p>
-            <p class="recipe-text font-weight-bold pb-0 mb-0">Ingredients:</p>
-            <p>{{recipe.ingredients}}</p>
-            <p class="recipe-text font-weight-bold pb-0 mb-0">Steps:</p>
-            <p>{{recipe.steps}}</p>
-            {% if recipe.user.id == user.id %}
+            {% if recipe.creator.id == user.id %}
             <form action="/home/delete_recipe" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
