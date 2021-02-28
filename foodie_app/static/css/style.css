@@ -48,7 +48,7 @@ h2 {
     font-size: 1.15em;
 }
 
-#log-off {
+#log-off, .edit-recipe {
     background-color: #303c6c;
     color: #d2fdff;
 }
