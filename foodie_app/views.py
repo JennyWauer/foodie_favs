@@ -48,18 +48,6 @@ def add_recipe(request):
 
         recipe_model, created = Recipe.objects.get_or_create(name=recipe_name['name'], user=user_for_recipe['user'])
 
-        # for ingredient in ingredients:
-        #     ingredient_model, created = Ingredient.objects.get_or_create(ingredient=ingredient['ingredient'], amount=ingredient['amount'])
-        #     ingredient_model.save()
-        #     # new_recipe.ingredients.add(ingredient_model)
-        #     return JsonResponse({'status':200, 'created': created})
-
-        # for step in steps:
-        #     step_model, created = Step.objects.get_or_create(step=step['step'])
-        #     step_model.save()
-        #     # new_recipe.step.add(step_model)
-        #     return JsonResponse({'status':200, 'created': created})
-
 def add_item(request):
     if request.method == 'POST':
         Shopping_List_Item.objects.create(item = request.POST['item'])
