@@ -70,3 +70,13 @@ def edit_recipe(request, recipe_id):
             "recipe": Recipe.objects.get(id=recipe_id)
         }
         return render(request, 'edit_recipe.html', context)
+
+def edit(request):
+    if request.method == "POST":
+        recipe_to_edit = Recipe.objects.get(id=request.POST['recipe_id'])
+        recipe_to_edit.desc = request.POST['desc']
+        recipe_to_edit.ingredients = request.POST['ingredients']
+        recipe_to_edit.steps = request.POST['steps']
+        recipe_to_edit.source = request.POST['source']
+        recipe_to_edit.save()
+        return redirect("/home")

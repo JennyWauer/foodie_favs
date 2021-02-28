@@ -43,6 +43,7 @@
                 <br>
                 <textarea name="source" id="source" cols="45" rows="1" class="w-50">{{recipe.source}}</textarea>
             </div>
+            <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
             <input class="mt-3 edit-recipe rounded shadow-sm" type="submit" name="submit" id="submit" value="Update Recipe">
         </form>
     </div>
