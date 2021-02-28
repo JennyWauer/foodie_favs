@@ -85,6 +85,7 @@ def add_ingredient(request):
 def add_step(request):
     if request.method == "POST":
         step = request.POST.get('step')
+        print(step)
         step_number = request.POST.get('step_number')
         print(step_number)
         step_number = int(step_number)
