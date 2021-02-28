@@ -2,6 +2,14 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+.body {
+    background-color: whitesmoke;
+}
+
+.recipe-card {
+    background-color: white;
+}
+
 h2, .home {
     color: #303c6c;
 }
