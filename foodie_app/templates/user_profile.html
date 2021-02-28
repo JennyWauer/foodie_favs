@@ -16,11 +16,13 @@
 </head>
 
 <body id="body">
-    <header id="header" class="bg-white d-flex p-3 align-items-center">
-        <h2 class="pr-5 mb-0">Foodie Favs</h2>
-        <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
-        <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
+    <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
+        <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
+        <a href="/home/new_recipe" class="new-recipe p-1 rounded ml-auto mr-2">+ Recipe</a>
+        <a href="/home/{{user.id}}" class="icon rounded p-1">My Profile</a>
+        <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
+    <div class="pt-5"></div>
     <div class="d-flex mt-5 pt-5">
         <div class="w-50">
             <h2 class="heading">This Week</h2>

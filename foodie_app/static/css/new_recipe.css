@@ -1,3 +1,5 @@
+@import 'style.css';
+
 body {
     font-family: "Roboto", sans-serif;
     background-color: #fef9e7;
@@ -20,13 +22,6 @@ button, .submitIngredient, .submitStep {
     color: #d2fdff;
     font-size: 1.15em;
     }
-
-.icon {
-    height: 3em;
-    width: 3em;
-    border: 2px solid #303c6c;
-    color: #303c6c;
-}
 
 #log-off {
     background-color: #303c6c;

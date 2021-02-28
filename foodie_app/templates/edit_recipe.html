@@ -17,8 +17,15 @@
     <script src="{% static 'js/app.js' %}"></script>
 </head>
 <body>
+    <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
+        <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
+        <a href="/home/new_recipe" class="new-recipe p-1 rounded ml-auto mr-2">+ Recipe</a>
+        <a href="/home/{{user.id}}" class="icon rounded p-1">My Profile</a>
+        <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
+    </header>
+    <div class="pt-5"></div>
     <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto rounded">
-        <h2>{{recipe.name}}</h2>
+        <h2 class="text-center">{{recipe.name}}</h2>
         <p class="mb-1">Added by: {{recipe.creator.first_name}} {{recipe.creator.last_name}}</p>
         <p>Last updated: {{recipe.updated_at}}</p>
         <form action="/home/edit" method="POST" id="edit-recipe-form">
