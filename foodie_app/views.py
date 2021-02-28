@@ -60,5 +60,5 @@ def recipe_page(request, recipe_id):
 
 def add_recipe(request):
     if request.method == "POST":
-        Recipe.objects.create(name=request.POST['name'],desc=request.POST['desc'],ingredients=request.POST['ingredients'],steps=request.POST['steps'],creator=User.objects.get(id=request.POST['user_id']))
+        Recipe.objects.create(name=request.POST['name'],desc=request.POST['desc'],ingredients=request.POST['ingredients'],steps=request.POST['steps'],creator=User.objects.get(id=request.POST['user_id']),source=request.POST['source'])
         return redirect('/home')

@@ -27,10 +27,29 @@
     <div class="pt-5"></div>
     <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto rounded">
         <h2 class="text-center">{{recipe.name}}</h2>
-        <div class="p-4">
-            <p>{{recipe.desc}}</p>
+        <p class="text-center">{{recipe.desc}}</p>
+        <div class="pl-4 pr-4 pt-1 pb-2">
+            <p class="font-weight-bold">Ingredients:</p class="font-weight-bold">
             <p>{{recipe.ingredients}}</p>
+            <p class="font-weight-bold">Steps:</p class="font-weight-bold">
             <p>{{recipe.steps}}</p>
+            <p>Recipe added by: {{recipe.creator.first_name}} {{recipe.creator.last_name}}</p>
+            <a href="{{recipe.source}}">{{recipe.source}}</a>
+            <div class="d-flex">
+                {% if recipe.creator.id == user.id %}
+                <form action="/home/delete_recipe" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                    <input class="btn btn-danger p-1 mr-2" type="submit" name="delete" value="Delete">
+                </form>
+                <form action="/home/edit_recipe" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                    <input class="btn btn-secondary p-1 pl-2 pr-2" type="submit" name="edit" value="Edit">
+                </form>
+                {% endif %}
+            </div>
+            
         </div>
         
     </div>
