@@ -15,6 +15,7 @@ urlpatterns = [
     path('edit', views.edit),
     path('add_favorite', views.add_favorite),
     path('remove_favorite', views.remove_favorite),
+    path('menu', views.menu),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]

@@ -97,3 +97,10 @@ def remove_favorite(request):
         recipe_to_remove.users_who_favorite.remove(user_to_remove)
         recipe_to_remove.save()
         return redirect('/home')
+
+def menu(request):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid'])
+        }
+        return render(request, 'menu.html', context)
