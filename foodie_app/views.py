@@ -30,6 +30,7 @@ def user_profile(request, user_id):
     if 'userid' in request.session:
         context = {
             "user": User.objects.get(id=request.session['userid']),
+            "recipes": Recipe.objects.filter(creator=User.objects.get(id=request.session['userid'])),
         }
         return render(request, 'user_profile.html', context)
     return redirect('/login')

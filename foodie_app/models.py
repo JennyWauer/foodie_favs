@@ -24,6 +24,7 @@ class Recipe(models.Model):
     menus = models.ManyToManyField(Menu, related_name="menu_recipes", default=1)
     creator = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE, default=1)
     source = models.CharField(max_length=255, default="")
+    users_who_favorite = models.ManyToManyField(User, related_name="favorite_recipes", default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
