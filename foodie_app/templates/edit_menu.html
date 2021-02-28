@@ -24,6 +24,56 @@
         <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
     <button id="topBtn" title="Go to top" class="btn rounded shadow">Top</button>
-    <div class="pt-5"></div>   
+    <div class="pt-5"></div>
+    <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto rounded recipe-card">
+        <h2 class="text-center">This Week's Menu:</h2>
+            <form action="/home/edit_menu" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="sunday">Sunday: </label>
+                    <select name="sunday" id="sunday">
+                        <option value="{{menu.sunday.name}}">{{menu.sunday.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="monday">Monday: </label>
+                    <select name="monday" id="monday">
+                        <option value="{{menu.monday.name}}">{{menu.monday.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="tuesday">Tuesday: </label>
+                    <select name="tuesday" id="tuesday">
+                        <option value="{{menu.tuesday.name}}">{{menu.tuesday.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="wednesday">Wednesday: </label>
+                    <select name="wednesday" id="wednesday">
+                        <option value="{{menu.wednesday.name}}">{{menu.wednesday.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="thursday">Thursday: </label>
+                    <select name="thursday" id="thursday">
+                        <option value="{{menu.thursday.name}}">{{menu.thursday.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="friday">Friday: </label>
+                    <select name="friday" id="friday">
+                        <option value="{{menu.friday.name}}">{{menu.friday.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="saturday">Saturday: </label>
+                    <select name="saturday" id="saturday">
+                        <option value="{{menu.saturday.name}}">{{menu.saturday.name}}</option>
+                    </select>
+                </div>
+                <input type="submit" name="submit" id="submit" value="Save Menu" class="save-menu btn">
+            </form>
+      
+    </div>    
 </body>
 </html>
