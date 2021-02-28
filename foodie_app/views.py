@@ -31,6 +31,7 @@ def user_profile(request, user_id):
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "recipes": Recipe.objects.filter(creator=User.objects.get(id=request.session['userid'])),
+            "menu": Menu.objects.get(id=1)
         }
         return render(request, 'user_profile.html', context)
     return redirect('/login')
@@ -105,3 +106,8 @@ def menu(request):
             "recipes": Recipe.objects.all(),
         }
         return render(request, 'menu.html', context)
+
+def create_menu(request):
+    if request.method == "POST":
+        Menu.objects.create(sunday=Recipe.objects.get(id=request.POST['sunday']),monday=Recipe.objects.get(id=request.POST['monday']),tuesday=Recipe.objects.get(id=request.POST['tuesday']),wednesday=Recipe.objects.get(id=request.POST['wednesday']),thursday=Recipe.objects.get(id=request.POST['thursday']),friday=Recipe.objects.get(id=request.POST['friday']), saturday=Recipe.objects.get(id=request.POST['saturday']))
+        return redirect('/home')

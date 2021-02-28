@@ -28,8 +28,8 @@ class Shopping_List_Item(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Menu(models.Model):
-    week_start = models.DateField()
-    week_end = models.DateField()
+    # week_start = models.DateField()
+    # week_end = models.DateField()
     sunday = models.ForeignKey(Recipe, related_name="sunday_recipes", on_delete=models.CASCADE)
     monday = models.ForeignKey(Recipe, related_name="monday_recipes", on_delete=models.CASCADE)
     tuesday = models.ForeignKey(Recipe, related_name="tuesday_recipes", on_delete=models.CASCADE)
