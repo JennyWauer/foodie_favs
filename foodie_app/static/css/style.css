@@ -56,7 +56,7 @@ h2, .home {
     font-size: 1.15em;
 }
 
-#log-off, .edit-recipe {
+#log-off, .edit-recipe, .favorite {
     background-color: #303c6c;
     color: #d2fdff;
 }

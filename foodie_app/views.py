@@ -80,4 +80,20 @@ def edit(request):
         recipe_to_edit.steps = request.POST['steps']
         recipe_to_edit.source = request.POST['source']
         recipe_to_edit.save()
-        return redirect("/home")
+        return redirect("/home") #try to redirect back to recipe...
+
+def add_favorite(request):
+    if request.method == "POST":
+        recipe_to_fav = Recipe.objects.get(id=request.POST['recipe_id'])
+        user_who_liked = User.objects.get(id=request.POST['user_id'])
+        recipe_to_fav.users_who_favorite.add(user_who_liked)
+        recipe_to_fav.save()
+        return redirect('/home')
+
+def remove_favorite(request):
+    if request.method == "POST":
+        recipe_to_remove = Recipe.objects.get(id=request.POST['recipe_id'])
+        user_to_remove = User.objects.get(id=request.POST['user_id'])
+        recipe_to_remove.users_who_favorite.remove(user_to_remove)
+        recipe_to_remove.save()
+        return redirect('/home')
