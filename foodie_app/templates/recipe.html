@@ -35,7 +35,7 @@
             <p>{{recipe.steps}}</p>
             <p>Recipe added by: {{recipe.creator.first_name}} {{recipe.creator.last_name}}</p>
             <a href="{{recipe.source}}">{{recipe.source}}</a>
-            <div class="d-flex">
+            <div class="d-flex mt-2">
                 {% if recipe.creator.id == user.id %}
                 <form action="/home/delete_recipe" method="POST">
                     {% csrf_token %}
