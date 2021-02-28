@@ -30,7 +30,6 @@ def user_profile(request, user_id):
     if 'userid' in request.session:
         context = {
             "user": User.objects.get(id=request.session['userid']),
-            "recipes": User.objects.get(id=request.session['userid']).recipes.all(),
         }
         return render(request, 'user_profile.html', context)
     return redirect('/login')
@@ -61,4 +60,5 @@ def recipe_page(request, recipe_id):
 
 def add_recipe(request):
     if request.method == "POST":
-        return redirect('/')
+        Recipe.objects.create(name=request.POST['name'],desc=request.POST['desc'],ingredients=request.POST['ingredients'],steps=request.POST['steps'],creator=User.objects.get(id=request.POST['user_id']))
+        return redirect('/home')

@@ -18,11 +18,12 @@ class Menu(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=255, default="")
-    ingredients = models.TextField()
-    steps = models.TextField()
+    ingredients = models.TextField(default="")
+    steps = models.TextField(default="")
     # ingredient = models.ForeignKey(Ingredient, related_name="ingredient_recipes", on_delete = models.CASCADE, default="1")
-    menus = models.ManyToManyField(Menu, related_name="menu_recipes", default="1")
-    creator = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE, default="1")
+    menus = models.ManyToManyField(Menu, related_name="menu_recipes", default=1)
+    creator = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE, default=1)
+    source = models.CharField(max_length=255, default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
