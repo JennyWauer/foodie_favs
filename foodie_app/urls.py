@@ -18,6 +18,7 @@ urlpatterns = [
     path('menu', views.menu),
     path('create_menu', views.create_menu),
     path('edit_menu<int:menu_id>', views.edit_menu_page),
+    path('edit_menu', views.edit_menu),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]

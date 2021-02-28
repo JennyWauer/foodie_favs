@@ -32,45 +32,67 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="sunday">Sunday: </label>
                     <select name="sunday" id="sunday">
-                        <option value="{{menu.sunday.name}}">{{menu.sunday.name}}</option>
+                        <option value="{{menu.sunday.id}}">{{menu.sunday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="monday">Monday: </label>
                     <select name="monday" id="monday">
-                        <option value="{{menu.monday.name}}">{{menu.monday.name}}</option>
+                        <option value="{{menu.monday.id}}">{{menu.monday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="tuesday">Tuesday: </label>
                     <select name="tuesday" id="tuesday">
-                        <option value="{{menu.tuesday.name}}">{{menu.tuesday.name}}</option>
+                        <option value="{{menu.tuesday.id}}">{{menu.tuesday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="wednesday">Wednesday: </label>
                     <select name="wednesday" id="wednesday">
-                        <option value="{{menu.wednesday.name}}">{{menu.wednesday.name}}</option>
+                        <option value="{{menu.wednesday.id}}">{{menu.wednesday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="thursday">Thursday: </label>
                     <select name="thursday" id="thursday">
-                        <option value="{{menu.thursday.name}}">{{menu.thursday.name}}</option>
+                        <option value="{{menu.thursday.id}}">{{menu.thursday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="friday">Friday: </label>
                     <select name="friday" id="friday">
-                        <option value="{{menu.friday.name}}">{{menu.friday.name}}</option>
+                        <option value="{{menu.friday.id}}">{{menu.friday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="saturday">Saturday: </label>
                     <select name="saturday" id="saturday">
-                        <option value="{{menu.saturday.name}}">{{menu.saturday.name}}</option>
+                        <option value="{{menu.saturday.id}}">{{menu.saturday.name}}</option>
+                        {% for recipe in recipes %}
+                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
+                <input type="hidden" name="menu_id" value="{{ menu.id }}">
                 <input type="submit" name="submit" id="submit" value="Save Menu" class="save-menu btn">
             </form>
       

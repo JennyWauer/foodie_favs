@@ -117,5 +117,19 @@ def edit_menu_page(request, menu_id):
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "menu": Menu.objects.get(id=menu_id),
+            "recipes": Recipe.objects.all(),
         }
         return render(request, 'edit_menu.html', context)
+
+def edit_menu(request):
+    if request.method == 'POST':
+        menu_to_edit = Menu.objects.get(id=request.POST['menu_id'])
+        menu_to_edit.sunday = Recipe.objects.get(id=request.POST['sunday'])
+        menu_to_edit.monday = Recipe.objects.get(id=request.POST['monday'])
+        menu_to_edit.tuesday = Recipe.objects.get(id=request.POST['tuesday'])
+        menu_to_edit.wednesday = Recipe.objects.get(id=request.POST['wednesday'])
+        menu_to_edit.thursday = Recipe.objects.get(id=request.POST['thursday'])
+        menu_to_edit.friday = Recipe.objects.get(id=request.POST['friday'])
+        menu_to_edit.saturday = Recipe.objects.get(id=request.POST['saturday'])
+        menu_to_edit.save()
+        return redirect('/home')
