@@ -68,7 +68,7 @@ def add_item(request):
 def log_off(request):
     request.session.clear()
     return redirect('/')
-    
+
 @csrf_exempt
 def add_ingredient(request):
     print("successful request")
@@ -80,6 +80,18 @@ def add_ingredient(request):
         ingredient_model, created = Ingredient.objects.get_or_create(quantity=quantity, measurement=measurement, name=name)
         ingredient_model.save()
         return HttpResponse("It worked!")
+
+@csrf_exempt
+def add_step(request):
+    if request.method == "POST":
+        step = request.POST.get('step')
+        step_number = request.POST.get('step_number')
+        print(step_number)
+        step_number = int(step_number)
+        step_model, created = Step.objects.get_or_create(step=step, step_number=step_number)
+        step_model.save()
+        return HttpResponse("It worked!")
+
 
 def delete_recipe(request):
     if request.method == "POST":

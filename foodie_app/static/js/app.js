@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    let z = 1;
+
     mybutton = document.getElementById("topBtn");
 
     window.onscroll = function() {scrollFunction()};
@@ -18,9 +21,6 @@ $(document).ready(function(){
           }
     )
     
-    let y = 0;
-    let z = 1;
-
     $('#addIngredient').click(() => {
             const ingredients = document.getElementById("ingredients");
             const div = document.createElement("div");
@@ -78,46 +78,56 @@ $(document).ready(function(){
     $('#addStep').click(() => {
         const steps = document.getElementById("steps");
         const newStep = document.createElement("div");
-        const step = "step" + y;
         const stepNum = z;
-    });
-});
 
-
-//             function getCookie(c_name) {
-//                 if(document.cookie.length > 0) {
-//                     c_start = document.cookie.indexOf(c_name + "=");
-//                     if(c_start != -1) {
-//                         c_start = c_start + c_name.length + 1;
-//                         c_end = document.cookie.indexOf(";", c_start);
-//                         if(c_end == -1) c_end = document.cookie.length;
-//                         return unescape(document.cookie.substring(c_start,c_end));
-//                     }
-//                 }
-//                 return "";
-//             }
-
-//     $('#addStep').click(() => {
-//         const steps = document.getElementById("steps");
-//         const newStep = document.createElement("div");
-//         const step = "step" + y;
-//         const stepNum = z;
-
-//         newStep.innerHTML = '<div>\n' +
-//             '<form action="/home/add_step" method="POST" class="stepForm">' +
-//             '<p class="mr-1 d-inline">' + stepNum + '.</p>' +
-//             '<input type="text" name="' + step + '" id="' + step + '" class="mb-1 mr-1">' +
-//             '<input type="submit" value="save step" class="submitStep rounded shadow-sm bg-white rounded">\n' +
-//             '<input type="hidden" name="stepNum" id="stepNum>'
-//             '</form>\n' +
-//             '</div>';
+        newStep.innerHTML = '<div>\n' +
+          '<form action="/home/add_step" method="POST" class="stepForm">' +
+          '<p class="mr-1 d-inline">' + stepNum + '.</p>' +
+          '<input type="text" name="step" id="step" class="mb-1 mr-1">' +
+          '<input type="hidden" name="step_number" id="step_number" value="' + stepNum + '">' +
+          '<input type="submit" value="save step" class="submitStep rounded shadow-sm bg-white rounded">\n' +
+          '</form>\n' +
+          '</div>';
         
-//         y++;
-//         z++;
-//     });
-    
-//     $('add-item').click(() => {
-//         console.log('hello')
-//         const list = document.getElementById("shopping-list");
-//         const itemLabel = document.createElement("Label")
-//         const listItem = document.createElement("INPUT")
+        steps.appendChild(newStep);
+        z++;
+
+        $('.submitStep').submit((e) => {
+            console.log('click');
+            e.preventDefault()
+            const form = $('.stepForm');
+            console.log(form.serialize());
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                  },
+                data: {
+                    step : $('#step').val(),
+                    step_number : $('#step_number').val(),
+                },
+                success : function(json) {
+                    $('#ingredients').val('');
+                    console.log(json);
+                    console.log('Sucessful!!!');
+                }
+            });
+        });
+    });
+});     
+
+// function getCookie(c_name) {
+//                   if(document.cookie.length > 0) {
+//                       c_start = document.cookie.indexOf(c_name + "=");
+//                       if(c_start != -1) {
+//                           c_start = c_start + c_name.length + 1;
+//                           c_end = document.cookie.indexOf(";", c_start);
+//                           if(c_end == -1) c_end = document.cookie.length;
+//                           return unescape(document.cookie.substring(c_start,c_end));
+//                       }
+//                   }
+//                   return "";
+//               }
+  
