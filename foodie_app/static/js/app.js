@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     mybutton = document.getElementById("topBtn");
 
     window.onscroll = function() {scrollFunction()};
@@ -17,48 +16,72 @@ $(document).ready(function(){
             document.body.scrollTop = 0; 
             document.documentElement.scrollTop = 0;
           }
-    )    
+    )
+    
+    let y = 0;
+    let z = 1;
+
+    $('#addIngredient').click(() => {
+            const ingredients = document.getElementById("ingredients");
+            const div = document.createElement("div");
+            div.innerHTML = '<div>\n' +
+                '<form action="/home/add_ingredient" method="POST" name="ingredientForm" class="ingredientForm">' +
+                '<label for="quantity" class="mr-1">Amount: </label>' +
+                '<input type="text" name="quantity" id="quantity" class="mr-1">' +
+                '<select name="measurement" id="measurement" class="mr-1">' +
+                '<option value="tsp">tsp.</option>' +
+                '<option value="tbsp">tbsp.</option>' +
+                '<option value="fl-oz">fl oz</option>' +
+                '<option value="mL">mL</option>' +
+                '<option value="cup">cup</option>' +
+                '<option value="ounce">oz</option>' +
+                '<option value="lb">lb</option>' +
+                '<option value="g">g</option>' +
+                '</select>' +
+                '<label for="name" class="mr-1">Name: </label>' +
+                '<input type="text" name="name" id="name" class="mr-1">' +
+                '<input type="submit" value="save ingredient" id="submitIngredient" class="submitIngredient rounded shadow-sm bg-white rounded">\n' +
+                '</form>' +
+                '</div>';
+            ingredients.appendChild(div);
+
+            
+
+            $('#submitIngredient').submit((e) => {
+                console.log('click');
+                e.preventDefault()
+                const form = $('.ingredientForm');
+                console.log(form.serialize());
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                      },
+                    data: {
+                       quantity : $('#quantity').val(),
+                       measurement : $('#measurement').val(),
+                       name : $('#name').val()
+                    },
+                    success : function(json) {
+                        $('#ingredients').val('');
+                        console.log(json);
+                        console.log('Sucessful!!!');
+                    }
+                })
+                // .done(function(response){
+                //     console.log(response);
+                // })
+            });
+        });
+    $('#addStep').click(() => {
+        const steps = document.getElementById("steps");
+        const newStep = document.createElement("div");
+        const step = "step" + y;
+        const stepNum = z;
 });
 
-//     let i = 0;
-//     let y = 0;
-//     let z = 1;
-//     let ii = 0;
-//     let yy = 0;
-//     const ingredientsDic = [];
-//     const stepDic = [];
-//     const recipeName = document.getElementById("name");
-//     const user = document.getElementById("user");
-
-
-//     $('#addIngredient').click(() => {
-//             const ingredients = document.getElementById("ingredients");
-//             const ingredient = "ingredient";
-//             const quantity = "quantity";
-//             const measurement = "measurement";
-//             const div = document.createElement("div");
-//             div.innerHTML = '<div>\n' +
-//                 '<form action="/home/add_ingredient" method="POST" class=".ingredientForm">' +
-//                 '<label for=quantity class="mr-1">Amount: </label>' +
-//                 '<input type="text" name=quantity id=quantity class="mr-1">' +
-//                 '<select name="measurement" id="measurement" class="mr-1">' +
-//                 '<option value="tsp">tsp.</option>' +
-//                 '<option value="tbsp">tbsp.</option>' +
-//                 '<option value="fl-oz">fl oz</option>' +
-//                 '<option value="mL">mL</option>' +
-//                 '<option value="cup">cup</option>' +
-//                 '<option value="ounce">oz</option>' +
-//                 '<option value="lb">lb</option>' +
-//                 '<option value="g">g</option>' +
-//                 '</select>' +
-//                 '<label for="name" class="mr-1">Name: </label>' +
-//                 '<input type="text" name="name" id="name" class="mr-1">' +
-//                 '<input type="submit" value="save ingredient" class="submitIngredient rounded shadow-sm bg-white rounded">\n' +
-//                 '</form>' +
-//                 '</div>';
-
-//             ingredients.appendChild(div);
-//             i++;
 
 //             function getCookie(c_name) {
 //                 if(document.cookie.length > 0) {
@@ -73,30 +96,6 @@ $(document).ready(function(){
 //                 return "";
 //             }
 
-//             $('.submitIngredient').click((e) => {
-//                 e.preventDefault()
-//                 $.ajax({
-//                     url: '/home/add_ingredient',
-//                     headers: {
-//                         'Accept': 'application/json',
-//                         'Content-Type': 'application/json',
-//                         'X-CSRFToken': getCookie('csrftoken'),
-//                       },
-//                     method: 'POST',
-//                     data:{
-//                         'quantity': $('#quantity').val(),
-//                         'measurement': $('#measurement').val(),
-//                         'ingredient': $('#name').val()
-//                     },
-//                     success: function(){
-//                         console.log("success")
-//                     },
-//                     dataType: "json"
-//                 })
-//                 })
-//                 return false;
-//             })
-//         });
 //     $('#addStep').click(() => {
 //         const steps = document.getElementById("steps");
 //         const newStep = document.createElement("div");

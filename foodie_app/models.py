@@ -18,10 +18,9 @@ class Menu(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=255, default="")
-    ingredients = models.TextField(default="")
-    steps = models.TextField(default="")
-    menus = models.ManyToManyField(Menu, related_name="menus")
-    user = models.ForeignKey(User, related_name="recipes", on_delete=models.CASCADE, default="1")
+    recipe_ingredient = models.ForeignKey(Ingredient, related_name="ingredients", on_delete = models.CASCADE)
+    recipe_menus = models.ManyToManyField(Menu, related_name="menus")
+    creator = models.ForeignKey(User, related_name="recipes", on_delete=models.CASCADE, default="1")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -30,9 +29,9 @@ class Shopping_List_Item(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-# class Step(models.Model):
-#     step = models.CharField(max_length=255)
-#     step_number = models.IntegerField(default=1)
-#     recipies = models.ForeignKey(Recipe, related_name="steps", on_delete=models.CASCADE, default=1)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
+class Step(models.Model):
+    step = models.CharField(max_length=255)
+    step_number = models.IntegerField(default=1)
+    step = models.ForeignKey(Recipe, related_name="recipes", on_delete=models.CASCADE, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
