@@ -62,3 +62,11 @@ def add_recipe(request):
     if request.method == "POST":
         Recipe.objects.create(name=request.POST['name'],desc=request.POST['desc'],ingredients=request.POST['ingredients'],steps=request.POST['steps'],creator=User.objects.get(id=request.POST['user_id']),source=request.POST['source'])
         return redirect('/home')
+
+def edit_recipe(request, recipe_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "recipe": Recipe.objects.get(id=recipe_id)
+        }
+        return render(request, 'edit_recipe.html', context)

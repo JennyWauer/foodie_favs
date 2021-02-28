@@ -42,7 +42,7 @@
                     <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
                     <input class="btn btn-danger p-1 mr-2" type="submit" name="delete" value="Delete">
                 </form>
-                <form action="/home/edit_recipe" method="POST">
+                <form action="/home/edit_{{recipe.id}}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
                     <input class="btn btn-secondary p-1 pl-2 pr-2" type="submit" name="edit" value="Edit">

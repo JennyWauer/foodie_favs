@@ -11,6 +11,7 @@ urlpatterns = [
     path('log_off', views.log_off),
     path('delete_recipe', views.delete_recipe),
     path('recipe_<int:recipe_id>', views.recipe_page),
+    path('edit_<int:recipe_id>', views.edit_recipe)
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
