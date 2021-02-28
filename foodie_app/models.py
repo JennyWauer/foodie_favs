@@ -21,7 +21,7 @@ class Recipe(models.Model):
     ingredients = models.TextField(default="")
     steps = models.TextField(default="")
     menus = models.ManyToManyField(Menu, related_name="menus")
-    user = models.ForeignKey(User, related_name="user", on_delete=models.CASCADE, default="1")
+    user = models.ForeignKey(User, related_name="recipes", on_delete=models.CASCADE, default="1")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
