@@ -26,51 +26,53 @@
     <div class="pt-5"></div>
     <div class="d-flex mt-5 pt-5">
         <div class="w-50">
-            <h2 class="heading">This Week</h2>
+            <div class="d-flex flex-column">
+                <h2 class="heading">This Week</h2>
+                <a class="btn view-recipe ml-auto mr-auto" href="/home/edit_menu{{menu.id}}">Edit Menu</a>
+            </div>
             <div class="menu w-100 m-3 d-flex flex-column p-1 rounded">
                 <div class="day-row d-flex justify-content-around p-1">
                     <div class="day rounded shadow-sm">
-                        <p>Sunday</p>
-                        <p>{{menu.sunday.name}}</p>
-                        <a href="/home/recipe_{{menu.sunday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Sunday</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.sunday.name}}</p>
+                        <a href="/home/recipe_{{menu.sunday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                     <div class="day rounded shadow-sm">
-                        <p>Monday</p>
-                        <p>{{menu.monday.name}}</p>
-                        <a href="/home/recipe_{{menu.monday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Monday</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.monday.name}}</p>
+                        <a href="/home/recipe_{{menu.monday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                     <div class="day rounded shadow-sm">
-                        <p>Tuesday</p>
-                        <p>{{menu.monday.name}}</p>
-                        <a href="/home/recipe_{{menu.monday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Tuesday</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.monday.name}}</p>
+                        <a href="/home/recipe_{{menu.monday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                 </div>
 
                 <div class="day-row d-flex justify-content-around p-1">
                     <div class="day rounded shadow-sm">
-                        <p>Wednesday</p>
-                        <p>{{menu.wednesday.name}}</p>
-                        <a href="/home/recipe_{{menu.wednesday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Wednesday</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.wednesday.name}}</p>
+                        <a href="/home/recipe_{{menu.wednesday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                     <div class="day rounded shadow-sm">
-                        <p>Thursday</p>
-                        <p>{{menu.thursday.name}}</p>
-                        <a href="/home/recipe_{{menu.thursday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Thursday</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.thursday.name}}</p>
+                        <a href="/home/recipe_{{menu.thursday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                     <div class="day rounded shadow-sm">
-                        <p>Friday</p>
-                        <p>{{menu.friday.name}}</p>
-                        <a href="/home/recipe_{{menu.friday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Friday</p>
+                        <p  class="w-75 ml-auto mr-auto">{{menu.friday.name}}</p>
+                        <a href="/home/recipe_{{menu.friday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                 </div>
                 <div class="day-row d-flex justify-content-around p-1">
                     <div class="day rounded shadow-sm">
-                        <p>Saturday</p>
-                        <p>{{menu.saturday.name}}</p>
-                        <a href="/home/recipe_{{menu.saturday.id}}">View Recipe</a>
+                        <p class="font-weight-bold pt-2">Saturday</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.saturday.name}}</p>
+                        <a href="/home/recipe_{{menu.saturday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                 </div>
-                <a href="/home/edit_menu">Edit Menu</a>
             </div>
         </div>
         <div class="w-25 d-flex flex-column align-items-center">

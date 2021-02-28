@@ -43,7 +43,7 @@ h2, .home {
 
 .day p {
     text-align: center;
-    size: 1.15em;
+    color: #303c6c;
 }
 
 .shopping-list {
@@ -56,7 +56,7 @@ h2, .home {
     font-size: 1.15em;
 }
 
-#log-off, .edit-recipe, .favorite {
+#log-off, .edit-recipe, .favorite, .view-recipe {
     background-color: #303c6c;
     color: #d2fdff;
 }

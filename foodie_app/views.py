@@ -111,3 +111,11 @@ def create_menu(request):
     if request.method == "POST":
         Menu.objects.create(sunday=Recipe.objects.get(id=request.POST['sunday']),monday=Recipe.objects.get(id=request.POST['monday']),tuesday=Recipe.objects.get(id=request.POST['tuesday']),wednesday=Recipe.objects.get(id=request.POST['wednesday']),thursday=Recipe.objects.get(id=request.POST['thursday']),friday=Recipe.objects.get(id=request.POST['friday']), saturday=Recipe.objects.get(id=request.POST['saturday']))
         return redirect('/home')
+
+def edit_menu_page(request, menu_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "menu": Menu.objects.get(id=menu_id),
+        }
+        return render(request, 'edit_menu.html', context)
