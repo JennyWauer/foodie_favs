@@ -68,6 +68,7 @@ def add_item(request):
 def log_off(request):
     request.session.clear()
     return redirect('/')
+    
 @csrf_exempt
 def add_ingredient(request):
     print("successful request")

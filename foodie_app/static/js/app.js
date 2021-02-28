@@ -80,6 +80,7 @@ $(document).ready(function(){
         const newStep = document.createElement("div");
         const step = "step" + y;
         const stepNum = z;
+    });
 });
 
 
