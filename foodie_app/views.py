@@ -101,6 +101,7 @@ def remove_favorite(request):
 def menu(request):
     if 'userid' in request.session:
         context = {
-            "user": User.objects.get(id=request.session['userid'])
+            "user": User.objects.get(id=request.session['userid']),
+            "recipes": Recipe.objects.all(),
         }
         return render(request, 'menu.html', context)
