@@ -28,7 +28,7 @@
         <h2 class="text-center">{{recipe.name}}</h2>
         <p class="mb-1">Added by: {{recipe.creator.first_name}} {{recipe.creator.last_name}}</p>
         <p>Last updated: {{recipe.updated_at}}</p>
-        <form action="/home/edit" method="POST" id="edit-recipe-form">
+        <form action="/home/{{recipe.id}}/edit" method="POST" id="edit-recipe-form">
             {% csrf_token %}
             <div class="form-group">
                 <label class="label font-weight-bold" for="desc">Recipe Description:</label>

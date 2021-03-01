@@ -49,7 +49,7 @@
                 </form>
                 {% endif %}
                 {% for favorite_user in recipe.users_who_favorite.all %}
-                <form action="/home/remove_favorite" method="POST">
+                <form action="/home/{{recipe.id}}/remove_favorite" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
                     <input type="hidden" name="user_id" value="{{ user.id }}">
@@ -57,7 +57,7 @@
                 </form>
                 {% endfor %}
             {% if not user in recipe.users_who_favorite.all %}
-            <form class="mt-0 mb-1" action="/home/add_favorite" method="POST">
+            <form class="mt-0 mb-1" action="/home/{{recipe.id}}/add_favorite" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
                 <input type="hidden" name="user_id" value="{{ user.id }}">

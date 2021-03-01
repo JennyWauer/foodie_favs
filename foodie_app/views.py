@@ -77,7 +77,7 @@ def edit_recipe(request, recipe_id):
         }
         return render(request, 'edit_recipe.html', context)
 
-def edit(request):
+def edit(request, recipe_id):
     if request.method == "POST":
         recipe_to_edit = Recipe.objects.get(id=request.POST['recipe_id'])
         recipe_to_edit.desc = request.POST['desc']
@@ -85,23 +85,23 @@ def edit(request):
         recipe_to_edit.steps = request.POST['steps']
         recipe_to_edit.source = request.POST['source']
         recipe_to_edit.save()
-        return redirect("/home") #try to redirect back to recipe...
+        return redirect(f'/home/recipe_{recipe_id}')
 
-def add_favorite(request):
+def add_favorite(request, recipe_id):
     if request.method == "POST":
         recipe_to_fav = Recipe.objects.get(id=request.POST['recipe_id'])
         user_who_liked = User.objects.get(id=request.POST['user_id'])
         recipe_to_fav.users_who_favorite.add(user_who_liked)
         recipe_to_fav.save()
-        return redirect('/home')
+        return redirect(f'/home/recipe_{recipe_id}')
 
-def remove_favorite(request):
+def remove_favorite(request, recipe_id):
     if request.method == "POST":
         recipe_to_remove = Recipe.objects.get(id=request.POST['recipe_id'])
         user_to_remove = User.objects.get(id=request.POST['user_id'])
         recipe_to_remove.users_who_favorite.remove(user_to_remove)
         recipe_to_remove.save()
-        return redirect('/home')
+        return redirect(f'/home/recipe_{recipe_id}')
 
 def menu(request):
     if 'userid' in request.session:
@@ -125,7 +125,7 @@ def edit_menu_page(request, menu_id):
         }
         return render(request, 'edit_menu.html', context)
 
-def edit_menu(request):
+def edit_menu(request, user_id):
     if request.method == 'POST':
         menu_to_edit = Menu.objects.get(id=request.POST['menu_id'])
         menu_to_edit.sunday = Recipe.objects.get(id=request.POST['sunday'])
@@ -136,7 +136,7 @@ def edit_menu(request):
         menu_to_edit.friday = Recipe.objects.get(id=request.POST['friday'])
         menu_to_edit.saturday = Recipe.objects.get(id=request.POST['saturday'])
         menu_to_edit.save()
-        return redirect('/home')
+        return redirect(f'/home/{user_id}')
 
 @csrf_exempt
 def add_item(request):
@@ -148,8 +148,16 @@ def add_item(request):
         print(shopping_list_item_model.item)
         return redirect('/home')
 
-def delete_item(request):
+def delete_item(request, user_id):
     if request.method == "POST":
         item_to_delete = Shopping_List_Item.objects.get(id=request.POST['item_id'])
         item_to_delete.delete()
-        return redirect('/home')
+        return redirect(f'/home/{user_id}')
+
+def remove_favorite_profile(request, user_id):
+    if request.method == "POST":
+        recipe_to_remove = Recipe.objects.get(id=request.POST['recipe_id'])
+        user_to_remove = User.objects.get(id=request.POST['user_id'])
+        recipe_to_remove.users_who_favorite.remove(user_to_remove)
+        recipe_to_remove.save()
+        return redirect(f'/home/{user_id}')

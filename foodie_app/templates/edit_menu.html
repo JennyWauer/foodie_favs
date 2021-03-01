@@ -27,7 +27,7 @@
     <div class="pt-5"></div>
     <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto rounded recipe-card">
         <h2 class="text-center">This Week's Menu:</h2>
-            <form action="/home/edit_menu" method="POST">
+            <form action="/home/{{user.id}}/edit_menu" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label" for="sunday">Sunday: </label>
