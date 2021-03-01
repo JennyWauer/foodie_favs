@@ -46,10 +46,6 @@ h2, .home {
     color: #303c6c;
 }
 
-.shopping-list {
-    border: 3px solid #d2fdff;
-}
-
 .add-item {
     background-color: #303c6c;
     color: #d2fdff;
@@ -86,4 +82,9 @@ h2, .home {
     z-index: 99;
     background-color: #303c6c;
     color: #d2fdff;
+}
+
+.shopping-box {
+        border: 3px solid #d2fdff;
+
 }

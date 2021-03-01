@@ -24,6 +24,7 @@ class Recipe(models.Model):
 
 class Shopping_List_Item(models.Model):
     item = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name="list_user", on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

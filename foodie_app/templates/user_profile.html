@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{user.first_name}} {{user.last_name}}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/app.js' %}"></script>
 </head>
 
 <body id="body">
@@ -87,15 +90,28 @@
         </div>
         <div class="w-25">
             <h2 class="heading">Shopping List</h2>
-            <div class="shopping-list m-1 p-2 rounded">
-                <form action="add_item" method="POST">
-                    {% csrf_token %}
-                    <div id="shopping-list">
-
-                    </div>
-                    <input id="add-item" type="submit" name="submit" value="Add Item">
-                </form>
+            <div class="shopping-box mr-3">
+                <div class="m-1 p-2 rounded" id="shopping-list">
+                    <ul>
+                        {% for item in shopping_list %}
+                            <div class="d-flex alin-items-start mb-2">
+                                <li class="pt-2">{{item.item}}</li>
+                                {% if item.user.id == user.id %}
+                                <form action="/home/delete_item" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="item_id" value="{{ item.id }}">
+                                <input class="btn btn-danger p-1 m-2" type="submit" name="delete" value="Delete">
+                                </form>
+                                {% endif %}
+                            </div>
+                            
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="rounded btn-secondary m-3" id="addItem">Add Item</button>
             </div>
+            
+
         </div>
     </div>
 </body>

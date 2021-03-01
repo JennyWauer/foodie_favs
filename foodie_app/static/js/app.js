@@ -1,25 +1,66 @@
 $(document).ready(function(){
 
-    let z = 1;
+  let z = 1;
 
-    mybutton = document.getElementById("topBtn");
+  mybutton = document.getElementById("topBtn");
 
-    window.onscroll = function() {scrollFunction()};
-    
-    function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
     }
-    
-    $('#topBtn').click(
-        function scrollToTop() {
-            document.body.scrollTop = 0; 
-            document.documentElement.scrollTop = 0;
-          }
-    )
+  }
+  
+  $('#topBtn').click(
+      function scrollToTop() {
+          document.body.scrollTop = 0; 
+          document.documentElement.scrollTop = 0;
+        }
+  )
+
+  $('#addItem').click(
+    function clickButton() {
+      console.log("working")
+      const shoppingList = document.getElementById("shopping-list");
+      const newItem = document.createElement("div");
+      newItem.innerHTML = '<div>\n' +
+        '<form action="/home/add_item" method="POST" name="listForm" class="listForm">' +
+        '<label for="item" class="mr-1">Item: </label>' +
+        '<input type="text" name="item" id="item" class="mr-1">' +
+        '<input type="submit" value="save item" id="submitItem" class="submitItem rounded shadow-sm bg-white rounded">\n' +
+        '</form>' +
+        '</div>';
+      
+      shoppingList.appendChild(newItem);
+
+      $('#submitItem').submit((e) => {
+          console.log('click');
+          e.preventDefault()
+          const form = $('.listForm');
+          console.log(form.serialize());
+          $.ajax({
+              url: form.attr('action'),
+              type: form.attr('method'),
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                },
+              data: {
+                  item : $('#item').val()
+              },
+              success : function(json) {
+                  $('#ingredients').val('');
+                  console.log(json);
+                  console.log('Sucessful!!!');
+              }
+          })
+
+        });
+    });
+    });
     
     // $('#addIngredient').click(() => {
     //         const ingredients = document.getElementById("ingredients");
@@ -115,8 +156,7 @@ $(document).ready(function(){
     //             }
     //         });
     //     });
-    // });
-});     
+    // }); 
 
 // function getCookie(c_name) {
 //                   if(document.cookie.length > 0) {

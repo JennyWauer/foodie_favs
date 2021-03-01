@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
-# from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import *
 
 from login.models import User
 
-# import json
+import json
 
-# from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 def home(request):
     if 'userid' in request.session:
@@ -31,8 +31,12 @@ def user_profile(request, user_id):
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "recipes": Recipe.objects.filter(creator=User.objects.get(id=request.session['userid'])),
-            "menu": Menu.objects.get(id=1)
+            "menu": Menu.objects.get(id=1),
+            "shopping_list": Shopping_List_Item.objects.all(),
         }
+
+        shoping_list = Shopping_List_Item.objects.all()
+        print(shoping_list)
         return render(request, 'user_profile.html', context)
     return redirect('/login')
 
@@ -132,4 +136,20 @@ def edit_menu(request):
         menu_to_edit.friday = Recipe.objects.get(id=request.POST['friday'])
         menu_to_edit.saturday = Recipe.objects.get(id=request.POST['saturday'])
         menu_to_edit.save()
+        return redirect('/home')
+
+@csrf_exempt
+def add_item(request):
+    if request.method == 'POST':
+        item = request.POST.get('item')
+        user = User.objects.get(id=request.session['userid'])
+        shopping_list_item_model, created = Shopping_List_Item.objects.get_or_create(item=item, user=user)
+        shopping_list_item_model.save()
+        print(shopping_list_item_model.item)
+        return redirect('/home')
+
+def delete_item(request):
+    if request.method == "POST":
+        item_to_delete = Shopping_List_Item.objects.get(id=request.POST['item_id'])
+        item_to_delete.delete()
         return redirect('/home')
