@@ -31,7 +31,7 @@ def user_profile(request, user_id):
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "recipes": Recipe.objects.filter(creator=User.objects.get(id=request.session['userid'])),
-            "menu": Menu.objects.get(id=1),
+            "menu": Menu.objects.last(),
             "shopping_list": Shopping_List_Item.objects.all(),
         }
 
