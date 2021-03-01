@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{user.first_name}} {{user.last_name}}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="day rounded shadow-sm">
                         <p class="font-weight-bold pt-2">Friday</p>
-                        <p  class="w-75 ml-auto mr-auto">{{menu.friday.name}}</p>
+                        <p class="w-75 ml-auto mr-auto">{{menu.friday.name}}</p>
                         <a href="/home/recipe_{{menu.friday.id}}" class="btn view-recipe">View Recipe</a>
                     </div>
                 </div>
@@ -82,10 +82,10 @@
             <h2 class="heading ">Favorite Recipies</h2>
             <a href="/home/new_recipe" class="new-recipe p-1 rounded shadow-sm bg-white rounded">Add New Recipe</a>
             {% for recipe in user.favorite_recipes.all %}
-                <div class="recipe-card rounded shadow-sm w-75 p-3 m-2">
-                    <p class= "text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></p>
-                    <p>{{recipe.desc}}</p>
-                </div>
+            <div class="recipe-card rounded shadow-sm w-75 p-3 m-2">
+                <p class="text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></p>
+                <p>{{recipe.desc}}</p>
+            </div>
             {% endfor %}
         </div>
         <div class="w-25">
@@ -94,24 +94,22 @@
                 <div class="m-1 p-2 rounded" id="shopping-list">
                     <ul>
                         {% for item in shopping_list %}
-                            <div class="d-flex alin-items-start mb-2">
-                                <li class="pt-2">{{item.item}}</li>
-                                {% if item.user.id == user.id %}
-                                <form action="/home/delete_item" method="POST">
+                        <div class="d-flex alin-items-start mb-2">
+                            <li class="pt-2">{{item.item}}</li>
+                            {% if item.user.id == user.id %}
+                            <form action="/home/delete_item" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="item_id" value="{{ item.id }}">
                                 <input class="btn btn-danger p-1 m-2" type="submit" name="delete" value="Delete">
-                                </form>
-                                {% endif %}
-                            </div>
-                            
+                            </form>
+                            {% endif %}
+                        </div>
+
                         {% endfor %}
                     </ul>
                 </div>
                 <button class="rounded btn-secondary m-3" id="addItem">Add Item</button>
             </div>
-            
-
         </div>
     </div>
 </body>
