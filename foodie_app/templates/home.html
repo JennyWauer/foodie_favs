@@ -30,7 +30,7 @@
     <div class="d-flex flex-wrap w-75 ml-auto mr-auto">
         {% for recipe in recipes %}
         <div class="recipe-card rounded shadow-sm w-25 p-3 mb-1">
-            <h3 class= "text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></h3>
+            <h3 class="text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></h3>
             <p>{{recipe.desc}}</p>
             {% if recipe.creator.id == user.id %}
             <form action="/home/delete_recipe" method="POST">
@@ -40,9 +40,9 @@
             </form>
             {% endif %}
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
-    
+
 </body>
 
 </html>

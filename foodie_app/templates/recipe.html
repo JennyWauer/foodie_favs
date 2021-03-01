@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/app.js' %}"></script> 
+    <script src="{% static 'js/app.js' %}"></script>
 </head>
+
 <body class="body">
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
         <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
@@ -53,21 +55,23 @@
                     {% csrf_token %}
                     <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
                     <input type="hidden" name="user_id" value="{{ user.id }}">
-                    <input class="btn favorite ml-2 pt-1 pb-1" type="submit" name="add_fav" value="Remove from Favorites">
+                    <input class="btn favorite ml-2 pt-1 pb-1" type="submit" name="add_fav"
+                        value="Remove from Favorites">
                 </form>
                 {% endfor %}
-            {% if not user in recipe.users_who_favorite.all %}
-            <form class="mt-0 mb-1" action="/home/{{recipe.id}}/add_favorite" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
-                <input type="hidden" name="user_id" value="{{ user.id }}">
-                <input class="btn favorite ml-2 pt-1 pb-1" type="submit" name="add_fav" value="Add to Favorites">
-            </form>
-            {% endif %}
+                {% if not user in recipe.users_who_favorite.all %}
+                <form class="mt-0 mb-1" action="/home/{{recipe.id}}/add_favorite" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <input class="btn favorite ml-2 pt-1 pb-1" type="submit" name="add_fav" value="Add to Favorites">
+                </form>
+                {% endif %}
             </div>
-            
+
         </div>
-        
+
     </div>
 </body>
+
 </html>

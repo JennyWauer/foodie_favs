@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/app.js' %}"></script>
 </head>
+
 <body class="body">
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
         <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
@@ -32,7 +34,7 @@
                 <label for="sunday">Sunday: </label>
                 <select name="sunday" id="sunday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -40,7 +42,7 @@
                 <label for="monday">Monday: </label>
                 <select name="monday" id="monday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -48,7 +50,7 @@
                 <label for="tuesday">Tuesday: </label>
                 <select name="tuesday" id="tuesday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -56,7 +58,7 @@
                 <label for="wednesday">Wednesday: </label>
                 <select name="wednesday" id="wednesday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -64,7 +66,7 @@
                 <label for="thursday">Thursday: </label>
                 <select name="thursday" id="thursday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -72,7 +74,7 @@
                 <label for="friday">Friday: </label>
                 <select name="friday" id="friday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -80,7 +82,7 @@
                 <label for="saturday">Saturday: </label>
                 <select name="saturday" id="saturday">
                     {% for recipe in recipes %}
-                        <option value="{{recipe.id}}">{{recipe.name}}</option>
+                    <option value="{{recipe.id}}">{{recipe.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -88,4 +90,5 @@
         </form>
     </div>
 </body>
+
 </html>
