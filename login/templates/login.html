@@ -23,18 +23,27 @@
         <div class="form w-50 h-100 container d-flex flex-column justify-content-center mr-0">
             <div class="h-50">
                 <h1 class="text-center">Login</h1>
+                {% if messages %}
+                <ul class="messages mt-2">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 <form class="mr-auto ml-auto w-100 text-center" action="/user_login" method="POST">
                     {% csrf_token %}
-                    <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_email" id="login_email" placeholder="email">
-                    <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_pass" id="login_pass" placeholder="password">
+                    <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_email"
+                        id="login_email" placeholder="email">
+                    <input class="w-50 m-2 p-2 shadow-sm rounded border-0 text-center" type="text" name="login_pass"
+                        id="login_pass" placeholder="password">
                     <br>
                     <input class="sign-in w-25 m-2 p-2 shadow-sm rounded border-0" type="submit" value="Sign In">
                 </form>
                 <p class="text-center">Not a user? <a class="text-primary" href="/register"><u>Register</u></a></p>
             </div>
-            
+
         </div>
-        
+
     </div>
 </body>
 
