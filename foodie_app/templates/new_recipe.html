@@ -26,6 +26,13 @@
     </header>
     <div class="pt-5"></div>
     <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-3 mb-5 bg-white rounded">
+        {% if messages %}
+        <ul class="messages mt-2">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <form action="/home/add_recipe" method="POST" id="new-recipe-form">
             {% csrf_token %}
             <div class="form-group">

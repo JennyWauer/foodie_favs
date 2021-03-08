@@ -9,6 +9,19 @@ from login.models import User
 #     created_at = models.DateTimeField(auto_now_add=True)
 #     updated_at = models.DateTimeField(auto_now=True)
 
+class RecipeManager(models.Manager):
+    def recipe_validator(self, postData):
+        errors = {}
+        if len(postData['name']) < 2:
+            errors["name"] = "Recipe name should be at least 2 characters"
+        if len(postData['desc']) < 3:
+            errors["desc"] = "Recipe description should be at least 3 characters"
+        if len(postData['ingredients']) < 3:
+            errors["ingredients"] = "Recipe ingredients should be at least 3 characters"
+        if len(postData['steps']) < 3:
+            errors["steps"] = "Recipe steps should be at least 3 characters"
+        return errors
+
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=255, default="")
@@ -21,6 +34,7 @@ class Recipe(models.Model):
     users_who_favorite = models.ManyToManyField(User, related_name="favorite_recipes", default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = RecipeManager()
 
 class Shopping_List_Item(models.Model):
     item = models.CharField(max_length=255)

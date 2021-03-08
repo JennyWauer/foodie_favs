@@ -5,6 +5,8 @@ from .models import *
 
 from login.models import User
 
+from django.contrib import messages
+
 import json
 
 from django.http import HttpResponse, JsonResponse
@@ -95,14 +97,20 @@ def delete_recipe(request):
 
 def add_recipe(request):
     if request.method == "POST":
-        Recipe.objects.create(
-            name=request.POST['name'],
-            desc=request.POST['desc'],
-            ingredients=request.POST['ingredients'],
-            steps=request.POST['steps'],
-            creator=User.objects.get(id=request.POST['user_id']),
-            source=request.POST['source'])
-        return redirect('/home')
+        errors = Recipe.objects.recipe_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/home/new_recipe')
+        else:
+            Recipe.objects.create(
+                name=request.POST['name'],
+                desc=request.POST['desc'],
+                ingredients=request.POST['ingredients'],
+                steps=request.POST['steps'],
+                creator=User.objects.get(id=request.POST['user_id']),
+                source=request.POST['source'])
+            return redirect('/home')
 
 def edit(request, recipe_id):
     if request.method == "POST":
