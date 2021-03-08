@@ -15,17 +15,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/new_recipe.css' %}">
-    <script src="{% static 'js/app.js' %}"></script> 
+    <script src="{% static 'js/app.js' %}"></script>
 </head>
 
 <body id="body">
-    <header id="header" class="bg-white d-flex p-3 align-items-center">
-        <h2 class="pr-5 mb-0">Foodie Favs</h2>
-        <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
-        <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
+    <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
+        <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
+        <a href="/home/{{user.id}}" class="icon rounded p-1 ml-auto">My Profile</a>
+        <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
+    <div class="pt-5"></div>
     <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-3 mb-5 bg-white rounded">
-        <form method="POST" id="new-recipe-form">
+        <form action="/home/add_recipe" method="POST" id="new-recipe-form">
             {% csrf_token %}
             <div class="form-group">
                 <label class="label" for="name">Recipe Name:</label>
@@ -33,20 +34,26 @@
                 <input type="text" name="name" id="name">
             </div>
             <div class="form-group">
-                <label class="label" for="name">Recipe Description:</label>
+                <label class="label" for="desc">Recipe Description:</label>
                 <br>
                 <textarea name="desc" id="desc" cols="30" rows="5"></textarea>
             </div>
-            <p class="label">Ingredients:</p>
-            <div class="mb-3 w-100" id="ingredients">
+            <div class="form-group">
+                <label class="label" for="ingredients">Ingredients:</label>
+                <br>
+                <textarea name="ingredients" id="ingredients" cols="30" rows="5"></textarea>
             </div>
-            <button class="mb-3 rounded shadow-sm bg-white" type="button" id="addIngredient">Add ingredient</button>
-            <p class="label">Steps:</p>
-            <div id="steps">
+            <div class="form-group">
+                <label class="label" for="steps">Steps:</label>
+                <br>
+                <textarea name="steps" id="steps" cols="30" rows="5"></textarea>
             </div>
-            <button class="mt-3 rounded shadow-sm bg-white" type="button" id="addStep">Add step</button>
-            <br>
-            <input type="hidden" name="user_id" value="{{user.id}}" id="user">
+            <div class="form-group">
+                <label class="label" for="source">Recipe From:</label>
+                <br>
+                <textarea name="source" id="source" cols="45" rows="1"></textarea>
+            </div>
+            <input type="hidden" name="user_id" value="{{user.id}}" id="user_id">
             <input class="mt-3 submit rounded shadow-sm" type="submit" name="submit" id="submit" value="Create Recipe!">
         </form>
     </div>

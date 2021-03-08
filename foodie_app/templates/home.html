@@ -12,17 +12,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/app.js' %}"></script>
 </head>
 
 <body id="body">
-    <header id="header" class="bg-white d-flex p-3 align-items-center">
-        <h2 class="pr-5 mb-0">Foodie Favs</h2>
-        <a href="/home/{{user.id}}" class="icon ml-auto mb-0 text-center pt-2 rounded-circle">{{user.first_name}}</a>
-        <a href="/home/log_off" class="btn ml-3 p-2" id="log-off">Log Off</a>
+    <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
+        <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
+        <a href="/home/new_recipe" class="new-recipe p-1 rounded ml-auto mr-2">+ Recipe</a>
+        <a href="/home/{{user.id}}" class="icon rounded p-1">My Profile</a>
+        <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
-    <h1 class="heading">Recipies</h1>
+    <h1 class="heading m-3 mt-5 pt-5">Recipies</h1>
+    <button id="topBtn" title="Go to top" class="btn rounded shadow">Top</button>
+    <div class="d-flex flex-wrap w-75 ml-auto mr-auto">
+        {% for recipe in recipes %}
+        <div class="recipe-card rounded shadow-sm w-25 p-3 mb-1">
+            <h3 class="text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></h3>
+            <p>{{recipe.desc}}</p>
+            {% if recipe.creator.id == user.id %}
+            <form action="/home/delete_recipe" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                <input class="btn btn-danger p-1" type="submit" name="delete" value="Delete">
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
 </body>
 
 </html>

@@ -2,13 +2,19 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-h2 {
+.body {
+    background-color: whitesmoke;
+}
+
+.recipe-card {
+    background-color: white;
+}
+
+h2, .home {
     color: #303c6c;
 }
 
 .icon {
-    height: 3em;
-    width: 3em;
     border: 2px solid #303c6c;
     color: #303c6c;
 }
@@ -37,11 +43,7 @@ h2 {
 
 .day p {
     text-align: center;
-    size: 1.15em;
-}
-
-.shopping-list {
-    border: 3px solid #d2fdff;
+    color: #303c6c;
 }
 
 .add-item {
@@ -50,7 +52,7 @@ h2 {
     font-size: 1.15em;
 }
 
-#log-off {
+#log-off, .edit-recipe, .favorite, .view-recipe, .save-menu {
     background-color: #303c6c;
     color: #d2fdff;
 }
@@ -58,4 +60,31 @@ h2 {
 .new-recipe {
     border: 2px solid #d2fdff;
     color: #303c6c;
+}
+
+#recipe-text {
+    color: #303c6c;
+}
+
+#header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#topBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99;
+    background-color: #303c6c;
+    color: #d2fdff;
+}
+
+.shopping-box {
+        border: 3px solid #d2fdff;
+
 }
