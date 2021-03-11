@@ -107,6 +107,14 @@
             <h2 class="heading">Shopping List</h2>
             <div class="shopping-box mr-3">
                 <div class="m-1 p-2 rounded" id="shopping-list">
+                    <input type="hidden" value="/home/{{user.id}}/add_item" id="userId">
+                    {% if messages %}
+                    <ul class="messages mt-2">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                     <ul>
                         {% for item in shopping_list %}
                         <div class="d-flex alin-items-start mb-2">

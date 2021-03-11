@@ -22,6 +22,13 @@ class RecipeManager(models.Manager):
             errors["steps"] = "Recipe steps should be at least 3 characters"
         return errors
 
+class ListManager(models.Manager):
+    def list_validator(self, postData):
+        errors = {}
+        if len(postData['item']) < 2:
+            errors["item"] = "Shopping list item should be at least 2 characters"
+        return errors
+
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=255, default="")
@@ -41,6 +48,7 @@ class Shopping_List_Item(models.Model):
     user = models.ForeignKey(User, related_name="list_user", on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = ListManager()
 
 class Menu(models.Model):
     # week_start = models.DateField()
