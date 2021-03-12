@@ -31,7 +31,11 @@
         <div class="w-50">
             <div class="d-flex flex-column">
                 <h2 class="heading">This Week</h2>
+                {%if menu.editor.id == user.id %}
                 <a class="btn view-recipe ml-auto mr-auto" href="/home/edit_menu{{menu.id}}">Edit Menu</a>
+                {% else %}
+                <a class="btn view-recipe ml-auto mr-auto" href="/home/menu">Create Menu</a>
+                {% endif %}
             </div>
             <div class="menu w-100 m-3 d-flex flex-column p-1 rounded">
                 <div class="day-row d-flex justify-content-around p-1">

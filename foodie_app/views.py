@@ -24,12 +24,15 @@ def home(request):
 
 def user_profile(request, user_id):
     if 'userid' in request.session:
+        menus = Menu.objects.filter(editor=User.objects.get(id=request.session['userid']))
+        menu = menus.last()
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "recipes": Recipe.objects.filter(creator=User.objects.get(id=request.session['userid'])),
-            "menu": Menu.objects.last(),
+            "menu": menu,
             "shopping_list": Shopping_List_Item.objects.all(),
         }
+        print(menu)
         return render(request, 'user_profile.html', context)
     return redirect('/login')
 
@@ -145,7 +148,8 @@ def create_menu(request):
             wednesday=Recipe.objects.get(id=request.POST['wednesday']),
             thursday=Recipe.objects.get(id=request.POST['thursday']),
             friday=Recipe.objects.get(id=request.POST['friday']),
-            saturday=Recipe.objects.get(id=request.POST['saturday']))
+            saturday=Recipe.objects.get(id=request.POST['saturday']),
+            editor=User.objects.get(id=request.POST['user_id']))
         return redirect('/home')
 
 def edit_menu(request, user_id):

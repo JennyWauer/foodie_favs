@@ -60,6 +60,7 @@ class Menu(models.Model):
     thursday = models.ForeignKey(Recipe, related_name="thursday_recipes", on_delete=models.CASCADE)
     friday = models.ForeignKey(Recipe, related_name="friday_recipes", on_delete=models.CASCADE)
     saturday = models.ForeignKey(Recipe, related_name="saturday_recipes", on_delete=models.CASCADE)
+    editor = models.ForeignKey(User, related_name="menus", on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
