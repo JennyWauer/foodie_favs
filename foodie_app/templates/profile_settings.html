@@ -24,7 +24,8 @@
         <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
     </header>
     <div class="mt-5 pt-5">
-        <div class="w-50">
+        <div class="w-50 ml-5 pl-5">
+            <h2>Edit Profile</h2>
             <form action="/home/{{user.id}}/update_profile" method="POST">
                 {% csrf_token %}
                 <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="first_name"
