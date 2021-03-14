@@ -204,3 +204,13 @@ def remove_favorite_profile(request, user_id):
         recipe_to_remove.users_who_favorite.remove(user_to_remove)
         recipe_to_remove.save()
         return redirect(f'/home/{user_id}')
+
+def update_profile(request, user_id):
+    if request.method == "POST":
+        profile_to_edit = User.objects.get(id=user_id)
+        profile_to_edit.first_name = request.POST['first_name']
+        profile_to_edit.last_name = request.POST['last_name']
+        profile_to_edit.email = request.POST['email']
+        profile_to_edit.profile_desc = request.POST['profile_desc']
+        profile_to_edit.save()
+        return redirect(f'/home/{user_id}')

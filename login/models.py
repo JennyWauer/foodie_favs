@@ -44,6 +44,7 @@ class User(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=255)
     followers = models.ManyToManyField("self", blank=True)
+    profile_desc = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()

@@ -21,7 +21,8 @@ urlpatterns = [
     path('<int:user_id>/delete_item', views.delete_item),
     path('<int:user_id>/remove_favorite_profile', views.remove_favorite_profile),
     path('log_off', views.log_off),
-    path('<int:user_id>_settings', views.profile_settings),
+    path('<int:user_id>/settings', views.profile_settings),
+    path('<int:user_id>/update_profile', views.update_profile),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
