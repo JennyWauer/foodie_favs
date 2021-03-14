@@ -36,6 +36,15 @@ def user_profile(request, user_id):
         return render(request, 'user_profile.html', context)
     return redirect('/login')
 
+def profile_settings(request, user_id):
+    if 'userid' in request.session:
+        
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+        }
+        return render(request, 'profile_settings.html', context)
+    return redirect('/login')
+
 def recipe_page(request, recipe_id):
     if 'userid' in request.session:
         context = {
