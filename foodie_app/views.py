@@ -32,7 +32,6 @@ def user_profile(request, user_id):
             "menu": menu,
             "shopping_list": Shopping_List_Item.objects.all(),
         }
-        print(menu)
         return render(request, 'user_profile.html', context)
     return redirect('/login')
 
