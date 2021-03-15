@@ -17,7 +17,7 @@ urlpatterns = [
     path('create_menu', views.create_menu),
     path('edit_menu<int:menu_id>', views.edit_menu_page),
     path('<int:user_id>/edit_menu', views.edit_menu),
-    path('<int:user_id>/add_item', views.add_item),
+    path('add_item', views.add_item),
     path('<int:user_id>/delete_item', views.delete_item),
     path('<int:user_id>/remove_favorite_profile', views.remove_favorite_profile),
     path('log_off', views.log_off),

@@ -27,7 +27,7 @@ $(document).ready(function(){
       const shoppingList = document.getElementById("shopping-list");
       const newItem = document.createElement("div");
       newItem.innerHTML = '<div>\n' +
-        '<form action="' + $('#userId').attr("value") + '" method="POST" name="listForm" class="listForm">' +
+        '<form action="/home/add_item" method="POST" name="listForm" class="listForm">' +
         '<label for="item" class="mr-1">Item: </label>' +
         '<input type="text" name="item" id="item" class="mr-1">' +
         '<input type="submit" value="save item" id="submitItem" class="submitItem rounded shadow-sm bg-white rounded">\n' +

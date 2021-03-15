@@ -174,9 +174,10 @@ def edit_menu(request, user_id):
         return redirect(f'/home/{user_id}')
 
 @csrf_exempt
-def add_item(request, user_id):
+def add_item(request):
     if request.method == 'POST':
         user_id = User.objects.get(id=request.session['userid'])
+        user_id = user_id.id
         errors = Shopping_List_Item.objects.list_validator(request.POST)
         if len(errors) > 0:
             for key, value in errors.items():
@@ -187,7 +188,6 @@ def add_item(request, user_id):
             user = User.objects.get(id=request.session['userid'])
             shopping_list_item_model, created = Shopping_List_Item.objects.get_or_create(item=item, user=user)
             shopping_list_item_model.save()
-            print(shopping_list_item_model.item)
             return redirect(f'/home/{user_id}')
 
 def delete_item(request, user_id):
