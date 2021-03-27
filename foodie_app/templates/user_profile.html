@@ -84,7 +84,6 @@
         </div>
         <div class="w-25 d-flex flex-column align-items-center">
             <h2 class="heading ">Favorite Recipes</h2>
-            <a href="/home/new_recipe" class="new-recipe p-1 rounded shadow-sm bg-white rounded">Add New Recipe</a>
             {% for recipe in user.favorite_recipes.all %}
             <div class="recipe-card rounded shadow-sm w-75 p-3 m-2">
                 <p class="text-center"><a id="recipe-text" href="/home/recipe_{{recipe.id}}">{{recipe.name}}</a></p>
