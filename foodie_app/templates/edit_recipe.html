@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit {{recipe.name}}</title>
+    <title>Edit Recipe</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/app.js' %}"></script>
 </head>
 
 <body class="body">
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
         <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
-        <a href="/home/new_recipe" class="new-recipe p-1 rounded ml-auto mr-2">+ Recipe</a>
-        <a href="/home/{{user.id}}" class="icon rounded p-1">My Profile</a>
-        <a href="/home/log_off" class="btn ml-2 p-1" id="log-off">Log Off</a>
+        <a href="/home/new_recipe" class="ml-auto btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="New Recipe"><i class="fas fa-plus"></i></a></i>
+        <a href="/home/{{user.id}}" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="far fa-user-circle"></i></a>
+        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
+            data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
     <div class="pt-5"></div>
     <div class="w-50 shadow-sm mt-5 p-4 ml-auto mr-auto rounded recipe-card">
@@ -58,7 +58,12 @@
                 value="Update Recipe">
         </form>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/181ad7b227.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>

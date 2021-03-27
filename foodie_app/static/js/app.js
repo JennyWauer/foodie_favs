@@ -60,8 +60,10 @@ $(document).ready(function(){
 
         });
     });
+    $('[data-toggle="tooltip"]').tooltip();
     });
-    
+   
+
     // $('#addIngredient').click(() => {
     //         const ingredients = document.getElementById("ingredients");
     //         const div = document.createElement("div");
