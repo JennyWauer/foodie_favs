@@ -3,10 +3,6 @@ body {
     background-color: #fefefe;
 }
 
-.body {
-    background-color: whitesmoke;
-}
-
 .recipe-card {
     background-color: white;
 }
@@ -26,7 +22,6 @@ h2, .home {
 }
 
 .heading {
-        font-family: 'Dancing Script', cursive;
     color: #303c6c;
     text-align: center;
 }
@@ -39,7 +34,10 @@ h2, .home {
 .day {
     width: 30%;
     background-color: white;
-    border: 3px solid #d2fdff;
+}
+
+.edit {
+    width: 35%;
 }
 
 .day p {
@@ -47,13 +45,7 @@ h2, .home {
     color: #303c6c;
 }
 
-.add-item {
-    background-color: #303c6c;
-    color: #d2fdff;
-    font-size: 1.15em;
-}
-
-#log-off, .edit-recipe, .favorite, .view-recipe, .save-menu, .submit {
+#log-off, .edit-recipe, .save-menu, .submit {
     background-color: #303c6c;
     color: #d2fdff;
 }
@@ -85,11 +77,19 @@ h2, .home {
     color: #d2fdff;
 }
 
-.shopping-box {
-        border: 3px solid #d2fdff;
-
-}
-
 .fa-input {
     font-family: "FontAwesome",Arial, Helvetica, sans-serif;
+}
+
+.view-recipe, .favorite, .add-item, .submitItem {
+    background-color: #d2fdff;
+    color: black;
+}
+.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover {
+    background-color: #303c6c; /* Green */
+    color: white;
+  }
+
+.shopping-box {
+    background-color: white;
 }

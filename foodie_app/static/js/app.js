@@ -28,9 +28,8 @@ $(document).ready(function(){
       const newItem = document.createElement("div");
       newItem.innerHTML = '<div>\n' +
         '<form action="/home/add_item" method="POST" name="listForm" class="listForm">' +
-        '<label for="item" class="mr-1">Item: </label>' +
         '<input type="text" name="item" id="item" class="mr-1">' +
-        '<input type="submit" value="save item" id="submitItem" class="submitItem rounded shadow-sm bg-white rounded">\n' +
+        '<input type="submit" value="save item" id="submitItem" class="btn btn-sm submitItem rounded shadow-sm">\n' +
         '</form>' +
         '</div>';
       
