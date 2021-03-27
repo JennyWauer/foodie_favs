@@ -120,7 +120,7 @@
                             <form action="/home/{{user.id}}/delete_item" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="item_id" value="{{ item.id }}">
-                                <input class="btn btn-danger p-1 m-2" type="submit" name="delete" value="Delete">
+                                <input class="btn fa-input" type="submit" name="delete" value="&#xf1f8" id="submitItem">
                             </form>
                         </div>
                         {% endif %}

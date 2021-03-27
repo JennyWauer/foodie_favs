@@ -92,3 +92,7 @@ h2, .home {
         border: 3px solid #d2fdff;
 
 }
+
+.fa-input {
+    font-family: "FontAwesome",Arial, Helvetica, sans-serif;
+}
