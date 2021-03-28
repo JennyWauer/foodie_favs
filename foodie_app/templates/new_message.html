@@ -25,7 +25,29 @@
         <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
             data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
-    <div class="pt-5"></div>
+    <div class="pt-5 mt-5 w-50 ml-auto mr-auto">
+        <h3>New Message</h3>
+        <form action="/home/{{user.id}}/send_message">
+            <div>
+                <label for="recipient">To</label>
+                <select name="recipient" id="recipient">
+                    {% for user in all_users %}
+                        <option value="{{user.id}}">{{ user.first_name }} {{user.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" id="subject">
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            </div>
+            <input type="submit" name="submit" id="submit" value="Send">
+        </form>
+    </div>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"

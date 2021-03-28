@@ -103,6 +103,8 @@ def new_message(request, user_id):
     if 'userid' in request.session:
         context = {
             "user": User.objects.get(id=request.session['userid']),
+            'all_users': User.objects.all(),
+
         }
         return render(request, 'new_message.html', context)
 
