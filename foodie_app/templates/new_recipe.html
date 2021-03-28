@@ -24,7 +24,8 @@
             data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
     <div class="pt-5"></div>
-    <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-4 mb-5 bg-white rounded">
+        <h3 class="text-center">New Recipe</h3>
         {% if messages %}
         <ul class="messages mt-2">
             {% for message in messages %}
@@ -35,32 +36,33 @@
         <form action="/home/add_recipe" method="POST" id="new-recipe-form">
             {% csrf_token %}
             <div class="form-group">
-                <label class="label" for="name">Recipe Name:</label>
+                <label class="label h5" for="name">Recipe Name:</label>
                 <br>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" class="form-control w-50">
             </div>
             <div class="form-group">
-                <label class="label" for="desc">Recipe Description:</label>
+                <label class="label h5" for="desc">Recipe Description:</label>
                 <br>
-                <textarea name="desc" id="desc" cols="30" rows="5"></textarea>
+                <textarea name="desc" id="desc" cols="30" rows="5" class="form-control w-50"></textarea>
             </div>
             <div class="form-group">
-                <label class="label" for="ingredients">Ingredients:</label>
+                <label class="label h5" for="ingredients">Ingredients:</label>
                 <br>
-                <textarea name="ingredients" id="ingredients" cols="30" rows="5"></textarea>
+                <textarea name="ingredients" id="ingredients" cols="30" rows="5" class="form-control w-50"></textarea>
             </div>
             <div class="form-group">
-                <label class="label" for="steps">Steps:</label>
+                <label class="label h5" for="steps">Steps:</label>
                 <br>
-                <textarea name="steps" id="steps" cols="30" rows="5"></textarea>
+                <textarea name="steps" id="steps" cols="30" rows="5" class="form-control w-50"></textarea>
             </div>
             <div class="form-group">
-                <label class="label" for="source">Recipe From:</label>
+                <label class="label h5" for="source">Recipe From:</label>
                 <br>
-                <textarea name="source" id="source" cols="45" rows="1"></textarea>
+                <textarea name="source" id="source" cols="45" rows="1" class="form-control w-50"></textarea>
             </div>
             <input type="hidden" name="user_id" value="{{user.id}}" id="user_id">
-            <input class="mt-3 submit rounded shadow-sm" type="submit" name="submit" id="submit" value="Create Recipe!">
+            <input class="mt-3 submit rounded shadow-sm new-recipe p-2" type="submit" name="submit" id="submit" value="Create Recipe!">
+            <a href="/home/{{user.id}}" class="btn btn-warning p-2 shadow-sm">Cancel</a>
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

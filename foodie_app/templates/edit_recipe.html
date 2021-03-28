@@ -33,29 +33,30 @@
         <form action="/home/{{recipe.id}}/edit" method="POST" id="edit-recipe-form">
             {% csrf_token %}
             <div class="form-group">
-                <label class="label font-weight-bold" for="desc">Recipe Description:</label>
+                <label class="label h5" for="desc">Recipe Description:</label>
                 <br>
-                <textarea name="desc" id="desc" cols="30" rows="5" class="w-50">{{recipe.desc}}</textarea>
+                <textarea name="desc" id="desc" cols="30" rows="5" class="form-control w-50">{{recipe.desc}}</textarea>
             </div>
             <div class="form-group">
-                <label class="label font-weight-bold" for="ingredients">Ingredients:</label>
+                <label class="label h5" for="ingredients">Ingredients:</label>
                 <br>
                 <textarea name="ingredients" id="ingredients" cols="30" rows="5"
-                    class="w-50">{{recipe.ingredients}}</textarea>
+                    class=" form-control w-50">{{recipe.ingredients}}</textarea>
             </div>
             <div class="form-group">
-                <label class="label font-weight-bold" for="steps">Steps:</label>
+                <label class="label h5" for="steps">Steps:</label>
                 <br>
-                <textarea name="steps" id="steps" cols="30" rows="5" class="w-50">{{recipe.steps}}</textarea>
+                <textarea name="steps" id="steps" cols="30" rows="5" class="form-control w-50">{{recipe.steps}}</textarea>
             </div>
             <div class="form-group">
-                <label class="label font-weight-bold" for="source">Recipe From:</label>
+                <label class="label h5" for="source">Recipe From:</label>
                 <br>
-                <textarea name="source" id="source" cols="45" rows="1" class="w-50">{{recipe.source}}</textarea>
+                <textarea name="source" id="source" cols="45" rows="1" class="form-control w-50">{{recipe.source}}</textarea>
             </div>
             <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
-            <input class="mt-3 edit-recipe rounded shadow-sm" type="submit" name="submit" id="submit"
+            <input class="btn mt-3 edit-recipe rounded shadow-sm" type="submit" name="submit" id="submit"
                 value="Update Recipe">
+            <a href="/home/{{recipe.id}}/delete_recipe" class="btn btn-danger p-2 mt-3"><i class="far fa-trash-alt"></i> Delete</a>
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
