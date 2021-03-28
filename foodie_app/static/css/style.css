@@ -72,11 +72,11 @@ h2, .home {
     color: #d2fdff;
 }
 
-.view-recipe, .favorite, .add-item, .submitItem, .new-recipe, .edit-recipe, .save-menu, .submit {
+.view-recipe, .favorite, .add-item, .submitItem, .new-recipe, .edit-recipe, .save-menu, .submit, .button {
     background-color: #d2fdff;
     color: black;
 }
-.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover, .new-recipe:hover, .edit-recipe:hover, .save-menu:hover, .submit:hover {
+.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover, .new-recipe:hover, .edit-recipe:hover, .save-menu:hover, .submit:hover, .button:hover {
     background-color: #303c6c; /* Green */
     color: white;
   }

@@ -94,6 +94,7 @@ def inbox(request, user_id):
     if 'userid' in request.session:
         context = {
             "user": User.objects.get(id=request.session['userid']),
+            "messages": Message.objects.all()
         }
         return render(request, 'inbox.html', context)
 
