@@ -3,7 +3,7 @@ body {
     background-color: #fdfdfd;
 }
 
-.recipe-card {
+.recipe-card, .card {
     background-color: white;
 }
 
