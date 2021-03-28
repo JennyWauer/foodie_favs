@@ -45,11 +45,6 @@ h2, .home {
     color: #303c6c;
 }
 
-#log-off, .save-menu, .submit {
-    background-color: #303c6c;
-    color: #d2fdff;
-}
-
 .new-recipe {
     border: 2px solid #d2fdff;
     color: #303c6c;
@@ -81,11 +76,11 @@ h2, .home {
     font-family: "FontAwesome",Arial, Helvetica, sans-serif;
 }
 
-.view-recipe, .favorite, .add-item, .submitItem, .new-recipe, .edit-recipe {
+.view-recipe, .favorite, .add-item, .submitItem, .new-recipe, .edit-recipe, .save-menu {
     background-color: #d2fdff;
     color: black;
 }
-.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover, .new-recipe:hover, .edit-recipe:hover {
+.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover, .new-recipe:hover, .edit-recipe:hover, .save-menu:hover {
     background-color: #303c6c; /* Green */
     color: white;
   }
