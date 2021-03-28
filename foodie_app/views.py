@@ -187,11 +187,10 @@ def add_item(request):
             shopping_list_item_model.save()
             return redirect(f'/home/{user_id}')
 
-def delete_item(request, user_id):
-    if request.method == "POST":
-        item_to_delete = Shopping_List_Item.objects.get(id=request.POST['item_id'])
-        item_to_delete.delete()
-        return redirect(f'/home/{user_id}')
+def delete_item(request, user_id, item_id):
+    item_to_delete = Shopping_List_Item.objects.get(id=item_id)
+    item_to_delete.delete()
+    return redirect(f'/home/{user_id}')
 
 def remove_favorite_profile(request, user_id):
     if request.method == "POST":

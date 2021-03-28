@@ -27,7 +27,7 @@
     </header>
     <button id="topBtn" title="Go to top" class="btn rounded shadow">Top</button>
     <div class="pt-5"></div>
-    <div class="d-flex mt-5 pt-5">
+    <div class="d-flex mt-4 pt-5">
         <div class="w-50">
             <div class="d-flex flex-column">
                 <h2 class="heading">This Week</h2>
@@ -119,11 +119,7 @@
                         {% if item.user.id == user.id %}
                         <div class="d-flex alin-items-start mb-2">
                             <li class="pt-2">{{item.item}}</li>
-                            <form action="/home/{{user.id}}/delete_item" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="item_id" value="{{ item.id }}">
-                                <input class="btn fa-input" type="submit" name="delete" value="&#xf1f8" id="submitItem">
-                            </form>
+                            <a href="/home/{{user.id}}/delete_item/{{item.id}}"><i class="btn mt-1 fas fa-trash"></i></a>
                         </div>
                         {% endif %}
                         {% endfor %}
