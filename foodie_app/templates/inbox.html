@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{user.first_name}} {{user.last_name}}</title>
+        <title>Inbox</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,6 +14,22 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 <body>
+    <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
+        <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
+        <a href="/home/new_recipe" class="ml-auto btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="New Recipe"><i class="fas fa-plus"></i></a></i>
+        <a href="/home/{{user.id}}/settings" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="Profile Settings"><i class="fas fa-cog"></i></a>
+        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
+            data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+    </header>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/181ad7b227.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/app.js' %}"></script>
     
 </body>
 </html>
