@@ -90,6 +90,13 @@ def log_off(request):
     request.session.clear()
     return redirect('/')
 
+def inbox(request, user_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+        }
+        return render(request, 'inbox.html', context)
+
 # POST Requests
 
 def add_item(request):
