@@ -76,11 +76,11 @@ h2, .home {
     font-family: "FontAwesome",Arial, Helvetica, sans-serif;
 }
 
-.view-recipe, .favorite, .add-item, .submitItem, .new-recipe, .edit-recipe, .save-menu {
+.view-recipe, .favorite, .add-item, .submitItem, .new-recipe, .edit-recipe, .save-menu, .submit {
     background-color: #d2fdff;
     color: black;
 }
-.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover, .new-recipe:hover, .edit-recipe:hover, .save-menu:hover {
+.view-recipe:hover, .favorite:hover, .add-item:hover, .submitItem:hover, .new-recipe:hover, .edit-recipe:hover, .save-menu:hover, .submit:hover {
     background-color: #303c6c; /* Green */
     color: white;
   }
