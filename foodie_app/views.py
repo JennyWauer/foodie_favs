@@ -90,6 +90,7 @@ def log_off(request):
     request.session.clear()
     return redirect('/')
 
+# INBOX 
 def inbox(request, user_id):
     if 'userid' in request.session:
         context = {
@@ -97,6 +98,13 @@ def inbox(request, user_id):
             "messages": Message.objects.all()
         }
         return render(request, 'inbox.html', context)
+
+def new_message(request, user_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+        }
+        return render(request, 'new_message.html', context)
 
 # POST Requests
 
@@ -217,3 +225,5 @@ def update_profile(request, user_id):
         profile_to_edit.profile_desc = request.POST['profile_desc']
         profile_to_edit.save()
         return redirect(f'/home/{user_id}')
+
+

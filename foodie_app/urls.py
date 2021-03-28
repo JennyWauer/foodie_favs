@@ -24,6 +24,7 @@ urlpatterns = [
     path('<int:user_id>/settings', views.profile_settings),
     path('<int:user_id>/update_profile', views.update_profile),
     path('<int:user_id>/inbox', views.inbox),
+    path('<int:user_id>/new_message', views.new_message)
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
