@@ -108,6 +108,15 @@ def new_message(request, user_id):
         }
         return render(request, 'new_message.html', context)
 
+def message(request, user_id, message_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            'message': Message.objects.get(id=message_id),
+            'all_users': User.objects.all(),
+        }
+        return render(request, 'message.html', context)  
+
 # POST Requests
 
 def add_item(request):
