@@ -257,3 +257,16 @@ def delete_message(request, user_id, message_id):
     message_to_delete = Message.objects.get(id=message_id)
     message_to_delete.delete()
     return redirect(f'/home/{user_id}/inbox')
+
+@csrf_exempt
+def reply(request, user_id, message_id):
+    if request.method == 'POST':
+        new_message = Message.objects.create(
+            subject=request.POST['subject'],
+            message=request.POST['message'],
+            sender=User.objects.get(id=user_id),
+            recipient=User.objects.get(id=request.POST['recipient_id']),
+        )
+        original_message = Message.objects.get(id=message_id)
+        original_message.replies.add(new_message.id)
+        return redirect(f'/home/{user_id}/inbox/{message_id}')

@@ -85,6 +85,7 @@ class Message(models.Model):
     message = models.TextField()
     sender = models.ForeignKey(User, related_name="sent_messages",on_delete = models.CASCADE)
     recipient = models.ForeignKey(User, related_name="received_messages",on_delete = models.CASCADE)
+    replies = models.ManyToManyField("self", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = MessageManager()

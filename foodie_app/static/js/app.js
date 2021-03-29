@@ -60,8 +60,38 @@ $(document).ready(function(){
         });
     });
     $('[data-toggle="tooltip"]').tooltip();
+
     });
    
+$('#reply').click (
+  function clickButton() {
+    const reply = document.getElementById("reply");
+    const message = document.getElementById("replyMessage");
+    const newReply = document.createElement("div");
+    let userId = document.getElementById("userId");
+    userId = userId.innerHTML;
+    let messageId = document.getElementById("messageId");
+    messageId = messageId.innerHTML
+    let recipientID = document.getElementById("recipientId")
+    recipientID = recipientID.innerHTML
+    let subject = document.getElementById("subject")
+    subject = subject.innerHTML
+    console.log(subject)
+    newReply.innerHTML = '<div>\n' +
+    '<form action="/home/' + userId + '/inbox/' + messageId + '/reply" method="POST">\n' +
+    '<div class="form-group">' +
+    '<label for="reply">Reply:</label>\n' +
+    '<textarea cols="30" rows="10" name="message" id="message" class="form-control w-50"></textarea>\n' +
+    '</div>' +
+    '<input type="hidden" name="recipient_id" id="recipient_id" value="' + recipientID + '">' +
+    '<input type="hidden" name="subject" id="subject" value"' + subject + '">' +
+    '<input type="submit" name="submit" id="submit" class="btn rounded shadow-sm submit" value="Send">' +
+    '</form>';
+
+    reply.style.display = "none";
+    message.appendChild(newReply);
+  }
+)
 
     // $('#addIngredient').click(() => {
     //         const ingredients = document.getElementById("ingredients");

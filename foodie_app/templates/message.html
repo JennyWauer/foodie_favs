@@ -25,12 +25,25 @@
         <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
             data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
+    <button id="topBtn" title="Go to top" class="btn rounded shadow">Top</button>
     <div class="pt-5"></div>
     <div class="w-50 ml-auto mr-auto card rounded shadow-sm p-3 mt-5 mb-5">
         <h3>{{ message.subject }}</h3>
         <p>From: {{ message.recipient.first_name }} {{ message.recipient.last_name }}</p>
         <p>Sent: {{ message.created_at }}</p>
         <p>{{ message.message }}</p>
+        <h3 class="mt-2">Replies</h3>
+        {% for reply in message.replies.all %}
+            <p>From: {{ reply.sender.first_name }} {{ reply.sender.last_name }}</p>
+            <p>Sent: {{ reply.created_at }}</p>
+            <p>{{ reply.message }}</p>
+        {% endfor %}
+        <div id="replyMessage">
+            <p id="messageId" hidden>{{ message.id }}</p>
+            <p id="userId" hidden>{{ user.id }}</p>
+            <p id="recipientId" hidden>{{ message.recipient.id }}</p>
+            <p id="subject" hidden>{{ message.subject }}</p>
+        </div>
         <button class="btn btn-lg submit rounded shadow-sm mr-auto" id="reply"><i class="fas fa-reply"></i></button>
     </div>
 

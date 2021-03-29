@@ -39,7 +39,7 @@
                     {% if message.recipient.id == user.id %}
                     <tr>
                         <td>{{ message.sender.first_name }} {{ message.sender.last_name }}</td>
-                        <td>{{ message.subject }}</td>
+                        <td><a href="/home/{{user.id}}/inbox/{{message.id}}">{{ message.subject }}</a></td>
                         <td>{{ message.created_at }} <a href="/home/{{user.id}}/{{message.id}}/delete_message"><i class="btn fas fa-trash"></i></a></td>
                     </tr>
                     {% endif %}
@@ -58,8 +58,8 @@
                     {% if message.sender.id == user.id %}
                     <tr>
                         <td>{{ message.recipient.first_name }} {{ message.recipient.last_name }}</td>
-                        <td>{{ message.subject }}</td>
-                        <td>{{ message.created_at }} <a href="/home/{{user.id}}/{message.id}}/delete"><i class="btn fas fa-trash"></i></a></td>
+                        <td><a href="/home/{{user.id}}/inbox/{{message.id}}">{{ message.subject }}</a></td>
+                        <td>{{ message.created_at }} <a href="/home/{{user.id}}/{{message.id}}/delete_message"><i class="btn fas fa-trash"></i></a></td>
                     </tr>
                     {% endif %}
                     {% endfor %}
