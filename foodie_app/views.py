@@ -90,6 +90,33 @@ def log_off(request):
     request.session.clear()
     return redirect('/')
 
+# INBOX 
+def inbox(request, user_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "messages": Message.objects.all()
+        }
+        return render(request, 'inbox.html', context)
+
+def new_message(request, user_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            'all_users': User.objects.all(),
+
+        }
+        return render(request, 'new_message.html', context)
+
+def message(request, user_id, message_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            'message': Message.objects.get(id=message_id),
+            'all_users': User.objects.all(),
+        }
+        return render(request, 'message.html', context)  
+
 # POST Requests
 
 def add_item(request):
@@ -209,3 +236,37 @@ def update_profile(request, user_id):
         profile_to_edit.profile_desc = request.POST['profile_desc']
         profile_to_edit.save()
         return redirect(f'/home/{user_id}')
+
+def send_message(request, user_id):
+    if request.method == 'POST':
+        errors = Message.objects.validate(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/home/{user_id}/inbox')
+        else:
+            Message.objects.create(
+                subject=request.POST['subject'],
+                message=request.POST['message'],
+                sender=User.objects.get(id=user_id),
+                recipient=User.objects.get(id=request.POST['recipient'])
+            )
+            return redirect(f'/home/{user_id}/inbox')
+
+def delete_message(request, user_id, message_id):
+    message_to_delete = Message.objects.get(id=message_id)
+    message_to_delete.delete()
+    return redirect(f'/home/{user_id}/inbox')
+
+@csrf_exempt
+def reply(request, user_id, message_id):
+    if request.method == 'POST':
+        new_message = Message.objects.create(
+            subject=request.POST['subject'],
+            message=request.POST['message'],
+            sender=User.objects.get(id=user_id),
+            recipient=User.objects.get(id=request.POST['recipient_id']),
+        )
+        original_message = Message.objects.get(id=message_id)
+        original_message.replies.add(new_message.id)
+        return redirect(f'/home/{user_id}/inbox/{message_id}')

@@ -70,3 +70,22 @@ class Menu(models.Model):
 #     recipe = models.ForeignKey(Recipe, related_name="steps", on_delete=models.CASCADE, default=1)
 #     created_at = models.DateTimeField(auto_now_add=True)
 #     updated_at = models.DateTimeField(auto_now=True)
+
+class MessageManager(models.Manager):
+    def validate(self, form):
+        errors = {}
+        if len(form['subject']) < 2:
+            errors['subject'] = "Subject field cannon be empty"
+        if len(form['message']) < 2:
+            errors['description'] = "Message field cannot be empty"
+        return errors
+
+class Message(models.Model):
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    sender = models.ForeignKey(User, related_name="sent_messages",on_delete = models.CASCADE)
+    recipient = models.ForeignKey(User, related_name="received_messages",on_delete = models.CASCADE)
+    replies = models.ManyToManyField("self", blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = MessageManager()

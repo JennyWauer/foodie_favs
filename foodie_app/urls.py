@@ -23,6 +23,12 @@ urlpatterns = [
     path('log_off', views.log_off),
     path('<int:user_id>/settings', views.profile_settings),
     path('<int:user_id>/update_profile', views.update_profile),
+    path('<int:user_id>/inbox', views.inbox),
+    path('<int:user_id>/new_message', views.new_message),
+    path('<int:user_id>/send_message', views.send_message),
+    path('<int:user_id>/<int:message_id>/delete_message', views.delete_message),
+    path('<int:user_id>/inbox/<int:message_id>', views.message),
+    path('<int:user_id>/inbox/<int:message_id>/reply', views.reply),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
