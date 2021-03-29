@@ -228,4 +228,23 @@ def update_profile(request, user_id):
         profile_to_edit.save()
         return redirect(f'/home/{user_id}')
 
+def send_message(request, user_id):
+    if request.method == 'POST':
+        errors = Message.objects.validate(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/home/{user_id}/inbox')
+        else:
+            Message.objects.create(
+                subject=request.POST['subject'],
+                message=request.POST['message'],
+                sender=User.objects.get(id=user_id),
+                recipient=User.objects.get(id=request.POST['recipient'])
+            )
+            return redirect(f'/home/{user_id}/inbox')
 
+def delete_message(request, user_id, message_id):
+    message_to_delete = Message.objects.get(id=message_id)
+    message_to_delete.delete()
+    return redirect(f'/home/{user_id}/inbox')

@@ -28,10 +28,12 @@
     <div class="pt-5"></div>
     <div class="w-50 ml-auto mr-auto card rounded shadow-sm p-3 mt-5 mb-5">
         <h3 class="text-center">New Message</h3>
-        <form action="/home/{{user.id}}/send_message">
+        <form action="/home/{{user.id}}/send_message" method="POST">
+            {% csrf_token %}
             <div class="form-group">
                 <label for="recipient" class="h5">To</label>
                 <select name="recipient" id="recipient" class="form-control w-50">
+                    <option value="" disabled selected>Select Recipient</option>
                     {% for user in all_users %}
                         <option value="{{user.id}}">{{ user.first_name }} {{user.last_name }}</option>
                     {% endfor %}
