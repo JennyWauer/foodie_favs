@@ -183,6 +183,7 @@ def remove_favorite(request, recipe_id):
 def create_menu(request):
     if request.method == "POST":
         Menu.objects.create(
+            week_start=request.POST['week_start'],
             sunday=Recipe.objects.get(id=request.POST['sunday']),
             monday=Recipe.objects.get(id=request.POST['monday']),
             tuesday=Recipe.objects.get(id=request.POST['tuesday']),
@@ -190,7 +191,7 @@ def create_menu(request):
             thursday=Recipe.objects.get(id=request.POST['thursday']),
             friday=Recipe.objects.get(id=request.POST['friday']),
             saturday=Recipe.objects.get(id=request.POST['saturday']),
-            editor=User.objects.get(id=request.POST['user_id']))
+            editor=User.objects.get(id=request.POST['user_id'])),
         return redirect('/home')
 
 def edit_menu(request, user_id):
@@ -203,6 +204,7 @@ def edit_menu(request, user_id):
         menu_to_edit.thursday = Recipe.objects.get(id=request.POST['thursday'])
         menu_to_edit.friday = Recipe.objects.get(id=request.POST['friday'])
         menu_to_edit.saturday = Recipe.objects.get(id=request.POST['saturday'])
+        menu_to_edit.week_start = request.POST['week_start']
         menu_to_edit.save()
         return redirect(f'/home/{user_id}')
 

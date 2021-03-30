@@ -31,7 +31,7 @@
         {% for menu in menus %}
             {% if menu.editor.id == user.id %}
                 <div class="menu w-75 ml-auto mr-auto m-3 d-flex flex-column p-1 pb-2 rounded shadow-sm">
-                    <h3 class="text-center p-2 home">Week of </h3>
+                    <h3 class="text-center p-2 home">Week of {{menu.week_start}}</h3>
                     <div class="day-row d-flex justify-content-around p-1">
                         <div class="day rounded shadow-sm d-flex flex-column">
                             <p class="font-weight-bold pt-2 h5 mt-2">Sunday</p>

@@ -32,6 +32,10 @@
         <form action="/home/{{user.id}}/edit_menu" method="POST">
             {% csrf_token %}
             <div class="form-group">
+                <label for="week_start" class="h5">Week Start: </label>
+                <input type="date" name="week_start" id="week_start" value="{{menu.week_start}}" min="2020-01-01" max="2025-01-01" class="form-control w-25">
+            </div>
+            <div class="form-group">
                 <label for="sunday" class="h5">Sunday: </label>
                 <select name="sunday" id="sunday" class="form-control w-50">
                     <option value="{{menu.sunday.id}}">{{menu.sunday.name}}</option>
