@@ -2,6 +2,8 @@ from django.db import models
 
 from login.models import User
 
+from datetime import datetime
+
 # class Ingredient(models.Model):
 #     quantity = models.CharField(max_length=255, default="")
 #     measurement = models.CharField(max_length=10, default="")
@@ -61,6 +63,7 @@ class Menu(models.Model):
     friday = models.ForeignKey(Recipe, related_name="friday_recipes", on_delete=models.CASCADE)
     saturday = models.ForeignKey(Recipe, related_name="saturday_recipes", on_delete=models.CASCADE)
     editor = models.ForeignKey(User, related_name="menus", on_delete=models.CASCADE, default=1)
+    week_start = models.DateField(default=datetime.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
