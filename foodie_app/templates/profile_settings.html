@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,31 +14,33 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
         <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
         <a href="/home/new_recipe" class="ml-auto btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
             data-toggle="tooltip" data-placement="bottom" title="New Recipe"><i class="fas fa-plus"></i></a></i>
         <a href="/home/{{user.id}}/inbox" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
-        data-toggle="tooltip" data-placement="bottom" title="Inbox"><i class="far fa-envelope"></i></a>
+            data-toggle="tooltip" data-placement="bottom" title="Inbox"><i class="far fa-envelope"></i></a>
         <a href="/home/{{user.id}}" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
             data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="far fa-user-circle"></i></a>
-        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
-            data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
     <div class="mt-5 pt-5">
         <div class="w-50 ml-5 pl-5">
             <h2>Edit Profile</h2>
             <form action="/home/{{user.id}}/update_profile" method="POST">
                 {% csrf_token %}
-                <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="first_name"
-                    id="first_name" value="{{user.first_name}}">
-                <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="last_name"
-                    id="last_name" value="{{user.last_name}}">
-                <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="email"
-                    id="email" value="{{user.email}}">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="first_name" id="first_name"
+                    value="{{user.first_name}}">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="last_name" id="last_name"
+                    value="{{user.last_name}}">
+                <input class="w-50 m-2 p-2 shadow-sm rounded border-0" type="text" name="email" id="email"
+                    value="{{user.email}}">
                 <br>
-                <textarea name="profile_desc" id="profile_desc" cols="30" rows="10" class="w-50 m-2 p-2 shadow-sm rounded border-0">{{user.profile_desc}}</textarea>
+                <textarea name="profile_desc" id="profile_desc" cols="30" rows="10"
+                    class="w-50 m-2 p-2 shadow-sm rounded border-0">{{user.profile_desc}}</textarea>
                 <br>
                 <input class="submit m-2 p-2 shadow-sm rounded border-0" type="submit" value="Update">
                 <a href="/home/{{user.id}}" class="btn btn-warning shadow-sm">Cancel</a>
@@ -51,4 +54,5 @@
     <script src="https://kit.fontawesome.com/181ad7b227.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/app.js' %}"></script>
 </body>
+
 </html>

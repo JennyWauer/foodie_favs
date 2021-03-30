@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New Message</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
 <body>
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
         <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
         <a href="/home/new_recipe" class="ml-auto btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
             data-toggle="tooltip" data-placement="bottom" title="New Recipe"><i class="fas fa-plus"></i></a>
         <a href="/home/{{user.id}}/inbox" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
-        data-toggle="tooltip" data-placement="bottom" title="Inbox"><i class="far fa-envelope"></i></a>
+            data-toggle="tooltip" data-placement="bottom" title="Inbox"><i class="far fa-envelope"></i></a>
         <a href="/home/{{user.id}}/settings" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
             data-toggle="tooltip" data-placement="bottom" title="Profile Settings"><i class="fas fa-cog"></i></a>
-        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
-            data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
     <div class="pt-5"></div>
     <div class="w-50 ml-auto mr-auto card rounded shadow-sm p-3 mt-5 mb-5">
@@ -35,7 +37,7 @@
                 <select name="recipient" id="recipient" class="form-control w-50">
                     <option value="" disabled selected>Select Recipient</option>
                     {% for user in all_users %}
-                        <option value="{{user.id}}">{{ user.first_name }} {{user.last_name }}</option>
+                    <option value="{{user.id}}">{{ user.first_name }} {{user.last_name }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -50,7 +52,7 @@
             <input type="submit" name="submit" id="submit" value="Send" class="btn shadow-sm submit">
         </form>
     </div>
-    
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
@@ -59,4 +61,5 @@
     <script src="https://kit.fontawesome.com/181ad7b227.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/app.js' %}"></script>
 </body>
+
 </html>

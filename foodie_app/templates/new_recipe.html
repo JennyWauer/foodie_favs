@@ -19,11 +19,11 @@
     <header id="header" class="bg-white d-flex p-3 align-items-center shadow-sm mt-0">
         <h2 class="pr-5 mb-0"><a href="/home" class="home">Foodie Favs</a></h2>
         <a href="/home/{{user.id}}/inbox" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
-        data-toggle="tooltip" data-placement="bottom" title="Inbox"><i class="far fa-envelope"></i></a>
+            data-toggle="tooltip" data-placement="bottom" title="Inbox"><i class="far fa-envelope"></i></a>
         <a href="/home/{{user.id}}" class="ml-auto btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
             data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="far fa-user-circle"></i></a>
-        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm" data-toggle="tooltip"
-            data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="/home/log_off" class="ml-2 btn-outline-secondary btn-lg p-1 pl-2 pr-2 rounded shadow-sm"
+            data-toggle="tooltip" data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
     </header>
     <div class="pt-5"></div>
     <div class="mt-5 ml-auto mr-auto w-50 shadow-sm p-4 mb-5 bg-white rounded">
@@ -63,7 +63,8 @@
                 <textarea name="source" id="source" cols="45" rows="1" class="form-control w-50"></textarea>
             </div>
             <input type="hidden" name="user_id" value="{{user.id}}" id="user_id">
-            <input class="mt-3 submit rounded shadow-sm new-recipe p-2" type="submit" name="submit" id="submit" value="Create Recipe!">
+            <input class="mt-3 submit rounded shadow-sm new-recipe p-2" type="submit" name="submit" id="submit"
+                value="Create Recipe!">
             <a href="/home/{{user.id}}" class="btn btn-warning p-2 shadow-sm">Cancel</a>
         </form>
     </div>
