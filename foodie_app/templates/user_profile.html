@@ -75,8 +75,9 @@
                         <a href="/home/recipe_{{menu.saturday.id}}" class="btn view-recipe ml-auto mr-auto mt-auto mb-2">View</a>
                     </div>
                     {%if menu.editor.id == user.id %}
-                    <div class="edit d-flex flex-column">
-                        <a class="btn btn-lg mt-auto ml-auto mr-1" href="/home/edit_menu{{menu.id}}"><i class="far fa-edit"></i></a>
+                    <div class="edit d-flex">
+                        <a class="btn btn-lg mt-auto ml-auto pr-2" href="/home/edit_menu{{menu.id}}"><i class="far fa-edit"></i></a>
+                        <a href="/home/menu" class="btn btn-lg mt-auto pl-1"><i class="fas fa-plus"></i></a></i>
                     </div>
                     {% else %}
                     <a class="btn view-recipe" href="/home/menu">create Menu</a>
