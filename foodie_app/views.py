@@ -90,6 +90,15 @@ def log_off(request):
     request.session.clear()
     return redirect('/')
 
+def previous_menus(request, user_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "menus": Menu.objects.all(),
+            "recipes": Recipe.objects.all(),
+        }
+        return render(request, 'previous_menus.html', context)
+
 # INBOX 
 def inbox(request, user_id):
     if 'userid' in request.session:

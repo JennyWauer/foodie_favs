@@ -29,6 +29,7 @@ urlpatterns = [
     path('<int:user_id>/<int:message_id>/delete_message', views.delete_message),
     path('<int:user_id>/inbox/<int:message_id>', views.message),
     path('<int:user_id>/inbox/<int:message_id>/reply', views.reply),
+    path('<int:user_id>/previous_menus', views.previous_menus),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
