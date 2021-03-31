@@ -282,3 +282,17 @@ def reply(request, user_id, message_id):
         original_message = Message.objects.get(id=message_id)
         original_message.replies.add(new_message.id)
         return redirect(f'/home/{user_id}/inbox/{message_id}')
+
+def remove_favorite_home(request, recipe_id):
+        recipe_to_remove = Recipe.objects.get(id=recipe_id)
+        user_to_remove = User.objects.get(id=request.session['userid'])
+        recipe_to_remove.users_who_favorite.remove(user_to_remove)
+        recipe_to_remove.save()
+        return redirect(f'/home')
+
+def add_favorite_home(request, recipe_id):
+    recipe_to_fav = Recipe.objects.get(id=recipe_id)
+    user_who_liked = User.objects.get(id=request.session['userid'])
+    recipe_to_fav.users_who_favorite.add(user_who_liked)
+    recipe_to_fav.save()
+    return redirect(f'/home/')

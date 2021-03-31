@@ -30,6 +30,8 @@ urlpatterns = [
     path('<int:user_id>/inbox/<int:message_id>', views.message),
     path('<int:user_id>/inbox/<int:message_id>/reply', views.reply),
     path('<int:user_id>/previous_menus', views.previous_menus),
+    path('<int:recipe_id>/remove_favorite_home', views.remove_favorite_home),
+    path('<int:recipe_id>/add_favorite_home', views.add_favorite_home),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
