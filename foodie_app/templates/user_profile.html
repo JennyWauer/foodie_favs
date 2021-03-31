@@ -116,31 +116,36 @@
             {% endfor %}
         </div>
         <div class="w-25">
-            <h2 class="heading">Shopping List</h2>
-            <div class="shopping-box mr-3 rounded shadow-sm">
-                <div class="m-1 p-2 rounded" id="shopping-list">
-                    <input type="hidden" value="/home/{{user.id}}/add_item" id="userId">
-                    {% if messages %}
-                    <ul class="messages mt-2">
-                        {% for message in messages %}
-                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    <ul>
-                        {% for item in shopping_list %}
-                        {% if item.user.id == user.id %}
-                        <div class="d-flex alin-items-start mb-2">
-                            <li class="pt-2">{{item.item}}</li>
-                            <a href="/home/{{user.id}}/delete_item/{{item.id}}"><i
-                                    class="btn mt-1 fas fa-trash"></i></a>
-                        </div>
+            {% if user.id == user_profile.id %}
+                <h2 class="heading">Shopping List</h2>
+                <div class="shopping-box mr-3 rounded shadow-sm">
+                    <div class="m-1 p-2 rounded" id="shopping-list">
+                        <input type="hidden" value="/home/{{user.id}}/add_item" id="userId">
+                        {% if messages %}
+                        <ul class="messages mt-2">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
                         {% endif %}
-                        {% endfor %}
-                    </ul>
+                        <ul>
+                            {% for item in shopping_list %}
+                            {% if item.user.id == user.id %}
+                            <div class="d-flex alin-items-start mb-2">
+                                <li class="pt-2">{{item.item}}</li>
+                                <a href="/home/{{user.id}}/delete_item/{{item.id}}"><i
+                                        class="btn mt-1 fas fa-trash"></i></a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <button class="btn rounded btn-sm m-3 add-item" id="addItem">Add Item</button>
                 </div>
-                <button class="btn rounded btn-sm m-3 add-item" id="addItem">Add Item</button>
-            </div>
+            {% else %}
+                <p>{{user_profile.desc}}</p>
+                <a href="home/{{user.id}}/follow_{{user_profile.id}}" class="btn button font-weight-bold p-2 pl-3 pr-3">Follow</a>
+            {% endif %}
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -32,6 +32,7 @@ def user_profile(request, user_id):
             "recipes": Recipe.objects.filter(creator=User.objects.get(id=request.session['userid'])),
             "menu": menu,
             "shopping_list": Shopping_List_Item.objects.all(),
+            "user_profile": User.objects.get(id=user_id),
         }
         return render(request, 'user_profile.html', context)
     return redirect('/login')
