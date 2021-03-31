@@ -18,6 +18,7 @@ def home(request):
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "recipes": Recipe.objects.all(),
+            "users": User.objects.all(),
         }
         return render(request, 'home.html', context)
     return redirect('/login')
