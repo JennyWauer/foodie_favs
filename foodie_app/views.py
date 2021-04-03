@@ -46,6 +46,7 @@ def profile_settings(request, user_id):
         return render(request, 'profile_settings.html', context)
     return redirect('/login')
 
+# RECIPE
 def recipe_page(request, recipe_id):
     if 'userid' in request.session:
         context = {
@@ -63,14 +64,19 @@ def new_recipe(request):
         return render(request, 'new_recipe.html', context)
     return redirect('/login')
 
-def edit_recipe(request, recipe_id):
+def edit_recipe_page(request, recipe_id):
     if 'userid' in request.session:
         context = {
             "user": User.objects.get(id=request.session['userid']),
             "recipe": Recipe.objects.get(id=recipe_id)
         }
         return render(request, 'edit_recipe.html', context)
+def delete_recipe(request, recipe_id):
+    recipe_to_delete = Recipe.objects.get(id=recipe_id)
+    recipe_to_delete.delete()
+    return redirect('/home')
 
+# MENU
 def menu(request):
     if 'userid' in request.session:
         context = {
@@ -78,19 +84,6 @@ def menu(request):
             "recipes": Recipe.objects.all(),
         }
         return render(request, 'menu.html', context)
-
-def edit_menu_page(request, menu_id):
-    if 'userid' in request.session:
-        context = {
-            "user": User.objects.get(id=request.session['userid']),
-            "menu": Menu.objects.get(id=menu_id),
-            "recipes": Recipe.objects.all(),
-        }
-        return render(request, 'edit_menu.html', context)
-
-def log_off(request):
-    request.session.clear()
-    return redirect('/')
 
 def previous_menus(request, user_id):
     if 'userid' in request.session:
@@ -100,6 +93,15 @@ def previous_menus(request, user_id):
             "recipes": Recipe.objects.all(),
         }
         return render(request, 'previous_menus.html', context)
+
+def edit_menu_page(request, menu_id):
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "menu": Menu.objects.get(id=menu_id),
+            "recipes": Recipe.objects.all(),
+        }
+        return render(request, 'edit_menu.html', context)
 
 # INBOX 
 def inbox(request, user_id):
@@ -128,18 +130,49 @@ def message(request, user_id, message_id):
         }
         return render(request, 'message.html', context)  
 
+# ADD AND REMOVE FAVORITES
+def add_favorite(request, recipe_id):
+    recipe_to_fav = Recipe.objects.get(id=recipe_id)
+    user_who_liked = User.objects.get(id=request.session['userid'])
+    recipe_to_fav.users_who_favorite.add(user_who_liked)
+    recipe_to_fav.save()
+    return redirect(f'/home/recipe_{recipe_id}')
+
+def remove_favorite(request, recipe_id):
+    recipe_to_remove = Recipe.objects.get(id=recipe_id)
+    user_to_remove = User.objects.get(id=request.session['userid'])
+    recipe_to_remove.users_who_favorite.remove(user_to_remove)
+    recipe_to_remove.save()
+    return redirect(f'/home/recipe_{recipe_id}')
+
+def remove_favorite_profile(request, user_id):
+    if request.method == "POST":
+        recipe_to_remove = Recipe.objects.get(id=request.POST['recipe_id'])
+        user_to_remove = User.objects.get(id=request.POST['user_id'])
+        recipe_to_remove.users_who_favorite.remove(user_to_remove)
+        recipe_to_remove.save()
+        return redirect(f'/home/{user_id}')
+
+def add_favorite_home(request, recipe_id):
+    recipe_to_fav = Recipe.objects.get(id=recipe_id)
+    user_who_liked = User.objects.get(id=request.session['userid'])
+    recipe_to_fav.users_who_favorite.add(user_who_liked)
+    recipe_to_fav.save()
+    return redirect(f'/home/')
+
+def remove_favorite_home(request, recipe_id):
+        recipe_to_remove = Recipe.objects.get(id=recipe_id)
+        user_to_remove = User.objects.get(id=request.session['userid'])
+        recipe_to_remove.users_who_favorite.remove(user_to_remove)
+        recipe_to_remove.save()
+        return redirect(f'/home')
+
+def log_off(request):
+    request.session.clear()
+    return redirect('/')
+
 # POST Requests
-
-def add_item(request):
-    if request.method == 'POST':
-        Shopping_List_Item.objects.create(item = request.POST['item'])
-        return redirect('/')
-
-def delete_recipe(request, recipe_id):
-    recipe_to_delete = Recipe.objects.get(id=recipe_id)
-    recipe_to_delete.delete()
-    return redirect('/home')
-
+# RECIPE
 def add_recipe(request):
     if request.method == "POST":
         errors = Recipe.objects.recipe_validator(request.POST)
@@ -157,7 +190,7 @@ def add_recipe(request):
                 source=request.POST['source'])
             return redirect('/home')
 
-def edit(request, recipe_id):
+def edit_recipe(request, recipe_id):
     if request.method == "POST":
         recipe_to_edit = Recipe.objects.get(id=request.POST['recipe_id'])
         recipe_to_edit.desc = request.POST['desc']
@@ -167,21 +200,7 @@ def edit(request, recipe_id):
         recipe_to_edit.save()
         return redirect(f'/home/recipe_{recipe_id}')
 
-def add_favorite(request, recipe_id):
-    recipe_to_fav = Recipe.objects.get(id=recipe_id)
-    user_who_liked = User.objects.get(id=request.session['userid'])
-    recipe_to_fav.users_who_favorite.add(user_who_liked)
-    recipe_to_fav.save()
-    return redirect(f'/home/recipe_{recipe_id}')
-
-def remove_favorite(request, recipe_id):
-    recipe_to_remove = Recipe.objects.get(id=recipe_id)
-    user_to_remove = User.objects.get(id=request.session['userid'])
-    recipe_to_remove.users_who_favorite.remove(user_to_remove)
-    recipe_to_remove.save()
-    return redirect(f'/home/recipe_{recipe_id}')
-
-
+# MENU
 def create_menu(request):
     if request.method == "POST":
         Menu.objects.create(
@@ -210,6 +229,12 @@ def edit_menu(request, user_id):
         menu_to_edit.save()
         return redirect(f'/home/{user_id}')
 
+# SHOPPING LIST
+def add_item(request):
+    if request.method == 'POST':
+        Shopping_List_Item.objects.create(item = request.POST['item'])
+        return redirect('/')
+
 @csrf_exempt
 def add_item(request):
     if request.method == 'POST':
@@ -232,14 +257,7 @@ def delete_item(request, user_id, item_id):
     item_to_delete.delete()
     return redirect(f'/home/{user_id}')
 
-def remove_favorite_profile(request, user_id):
-    if request.method == "POST":
-        recipe_to_remove = Recipe.objects.get(id=request.POST['recipe_id'])
-        user_to_remove = User.objects.get(id=request.POST['user_id'])
-        recipe_to_remove.users_who_favorite.remove(user_to_remove)
-        recipe_to_remove.save()
-        return redirect(f'/home/{user_id}')
-
+# PROFILE SETTINGS
 def update_profile(request, user_id):
     if request.method == "POST":
         profile_to_edit = User.objects.get(id=user_id)
@@ -250,6 +268,7 @@ def update_profile(request, user_id):
         profile_to_edit.save()
         return redirect(f'/home/{user_id}')
 
+# INBOX
 def send_message(request, user_id):
     if request.method == 'POST':
         errors = Message.objects.validate(request.POST)
@@ -283,17 +302,3 @@ def reply(request, user_id, message_id):
         original_message = Message.objects.get(id=message_id)
         original_message.replies.add(new_message.id)
         return redirect(f'/home/{user_id}/inbox/{message_id}')
-
-def remove_favorite_home(request, recipe_id):
-        recipe_to_remove = Recipe.objects.get(id=recipe_id)
-        user_to_remove = User.objects.get(id=request.session['userid'])
-        recipe_to_remove.users_who_favorite.remove(user_to_remove)
-        recipe_to_remove.save()
-        return redirect(f'/home')
-
-def add_favorite_home(request, recipe_id):
-    recipe_to_fav = Recipe.objects.get(id=recipe_id)
-    user_who_liked = User.objects.get(id=request.session['userid'])
-    recipe_to_fav.users_who_favorite.add(user_who_liked)
-    recipe_to_fav.save()
-    return redirect(f'/home/')

@@ -43,7 +43,7 @@
                 {% if recipe.creator.id == user.id %}
                 <a href="/home/{{recipe.id}}/delete_recipe" class="btn btn-danger p-1 mr-2"><i
                         class="far fa-trash-alt"></i> Delete</a>
-                <a href="/home/{{recipe.id}}/edit_recipe" class="btn btn-secondary p-1 mr-2"><i class="far fa-edit"></i>
+                <a href="/home/{{recipe.id}}/edit_recipe_page" class="btn btn-secondary p-1 mr-2"><i class="far fa-edit"></i>
                     Edit</a>
                 {% endif %}
                 {% if user in recipe.users_who_favorite.all %}
