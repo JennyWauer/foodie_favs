@@ -94,7 +94,7 @@ def edit_menu_page(request, menu_id):
         }
         return render(request, 'edit_menu.html', context)
 
-# PROFILE SETTINGS
+# USER PROFILE
 def profile_settings(request, user_id):
     if 'userid' in request.session:
         
@@ -258,7 +258,7 @@ def delete_item(request, user_id, item_id):
     item_to_delete.delete()
     return redirect(f'/home/{user_id}')
 
-# PROFILE SETTINGS
+# USER PROFILE
 def update_profile(request, user_id):
     if request.method == "POST":
         profile_to_edit = User.objects.get(id=user_id)
