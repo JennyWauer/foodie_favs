@@ -198,6 +198,19 @@ def log_off(request):
     request.session.clear()
     return redirect('/')
 
+# SEARCH BAR
+
+def search_bar(request):
+    if 'userid' in request.session:
+        search = request.GET.get('search')
+        recipe = Recipe.objects.all().filter(name='search')
+        user = User.objects.all().filter(first_name='search')
+        context = {
+            'recipe': recipe,
+            'user': user
+        }
+        return render(request, 'searchbar.html', context)
+
 # POST Requests
 # RECIPE
 

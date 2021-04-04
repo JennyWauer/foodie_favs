@@ -39,6 +39,8 @@ urlpatterns = [
     path('<int:recipe_id>/add_favorite_home', views.add_favorite_home),
     # LOG OFF
     path('log_off', views.log_off),
+    # SEARCH BAR 
+    path('search_bar/', views.search_bar),
     # path('add_ingredient', views.add_ingredient),
     # path('add_step', views.add_step),
 ]
